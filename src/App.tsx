@@ -1,13 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { BetList } from "./components";
+import { BetList, GameList } from "./components";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="m-5">
       <BetList />
+
+      <div className="mt-3">
+      <GameList />
+      </div>
     </div>
   );
 }

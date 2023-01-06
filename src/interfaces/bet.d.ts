@@ -1,9 +1,3 @@
-interface ITeam {
-  id: string;
-  name: string;
-  image: string;
-}
-
 interface IBet {
   id: string;
   teams: Array<ITeam>

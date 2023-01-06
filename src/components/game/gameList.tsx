@@ -1,6 +1,6 @@
-import BetItem from "./betItem";
+import GameItem from "./gameItem";
 
-const FAKE_BETS: IBet[] = [
+const FAKE_GAMES: IGame[] = [
   {
     id: "asdasd5sd3s21d3as",
     date: "2023-01-06T12:54:28.642Z",
@@ -17,9 +17,7 @@ const FAKE_BETS: IBet[] = [
         image:
           "https://static.dicionariodesimbolos.com.br/upload/60/81/conheca-o-significado-do-escudo-do-vasco-da-gama-5_xl.png",
       },
-    ],
-    value: 5.3,
-    score: [3, 0],
+    ]
   },
   {
     id: "asdasd5sd3s21d3as",
@@ -37,9 +35,7 @@ const FAKE_BETS: IBet[] = [
         image:
           "https://static.dicionariodesimbolos.com.br/upload/60/81/conheca-o-significado-do-escudo-do-vasco-da-gama-5_xl.png",
       },
-    ],
-    value: 5.3,
-    score: [3, 0],
+    ]
   },
   {
     id: "asdasd5sd3s21d3as",
@@ -57,20 +53,18 @@ const FAKE_BETS: IBet[] = [
         image:
           "https://static.dicionariodesimbolos.com.br/upload/60/81/conheca-o-significado-do-escudo-do-vasco-da-gama-5_xl.png",
       },
-    ],
-    value: 5.3,
-    score: [3, 0],
+    ]
   },
 ];
 
-const BetList: React.FC = () => {
+const GameList: React.FC = () => {
   return (
     <div className="flex gap-3 flex-wrap">
-      {FAKE_BETS.map((bet) => (
-        <BetItem bet={bet} />
+      {FAKE_GAMES.map((game) => (
+        <GameItem game={game} />
       ))}
     </div>
   );
 };
 
-export default BetList;
+export default GameList;
