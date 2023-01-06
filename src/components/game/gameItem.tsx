@@ -5,7 +5,7 @@ const GameItem: React.FC<{ game: IGame }> = ({ game }) => {
   const date = new Date(game.date);
 
   return (
-    <article className="flex bg-neutral-700 rounded-md py-2 px-3 gap-x-3 items-center">
+    <article className="flex bg-neutral-700 rounded-lg py-2 px-3 gap-x-3 items-center">
       <div className=" flex flex-col justify-center border-r border-gray-600 pr-3 text-center min-h-full">
         <p className="text-sm">{format(date, "EEEE", { locale: ptBR })}</p>
         <p>{format(date, "HH:mm")}</p>

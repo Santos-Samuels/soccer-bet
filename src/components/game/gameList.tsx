@@ -1,3 +1,4 @@
+import GameForm from "./gameForm";
 import GameItem from "./gameItem";
 
 const FAKE_GAMES: IGame[] = [
@@ -17,7 +18,7 @@ const FAKE_GAMES: IGame[] = [
         image:
           "https://static.dicionariodesimbolos.com.br/upload/60/81/conheca-o-significado-do-escudo-do-vasco-da-gama-5_xl.png",
       },
-    ]
+    ],
   },
   {
     id: "asdasd5sd3s21d3as",
@@ -35,7 +36,7 @@ const FAKE_GAMES: IGame[] = [
         image:
           "https://static.dicionariodesimbolos.com.br/upload/60/81/conheca-o-significado-do-escudo-do-vasco-da-gama-5_xl.png",
       },
-    ]
+    ],
   },
   {
     id: "asdasd5sd3s21d3as",
@@ -53,17 +54,21 @@ const FAKE_GAMES: IGame[] = [
         image:
           "https://static.dicionariodesimbolos.com.br/upload/60/81/conheca-o-significado-do-escudo-do-vasco-da-gama-5_xl.png",
       },
-    ]
+    ],
   },
 ];
 
 const GameList: React.FC = () => {
   return (
-    <div className="flex gap-3 flex-wrap">
-      {FAKE_GAMES.map((game) => (
-        <GameItem game={game} />
-      ))}
-    </div>
+    <>
+      <GameForm />
+
+      <div className="flex gap-3 flex-wrap">
+        {FAKE_GAMES.map((game) => (
+          <GameItem game={game} />
+        ))}
+      </div>
+    </>
   );
 };
 
