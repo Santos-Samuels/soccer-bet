@@ -1,3 +1,6 @@
+import { UseFormRegisterReturn } from "react-hook-form";
+import ErrorMessage from "./errorMessage";
+
 interface IProps extends React.ComponentPropsWithoutRef<"input"> {
   label?: string;
   placeholder?: string;
@@ -5,7 +8,7 @@ interface IProps extends React.ComponentPropsWithoutRef<"input"> {
   errorMessage?: string;
   id?: string;
   type?: string;
-  // formRegister: UseFormRegisterReturn;
+  formRegister: UseFormRegisterReturn;
 }
 
 const Input: React.FC<IProps> = ({
@@ -15,6 +18,7 @@ const Input: React.FC<IProps> = ({
   errorMessage,
   id,
   type,
+  formRegister,
   ...rest
 }) => {
   return (
@@ -23,11 +27,14 @@ const Input: React.FC<IProps> = ({
       <input
         placeholder={placeholder}
         {...rest}
-        // {...formRegister}
+        {...formRegister}
         id={id}
         type={type}
-        className="bg-neutral-600 px-2 py-1 rounded-lg"
+        className={`bg-neutral-600 px-2 py-1 rounded-lg ${
+          errorMessage ? "border border-red-100" : ""
+        }`}
       />
+      {errorMessage && <ErrorMessage message={errorMessage} />}
     </div>
   );
 };

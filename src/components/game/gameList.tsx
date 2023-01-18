@@ -1,3 +1,4 @@
+import { useState } from "react";
 import GameForm from "./gameForm";
 import GameItem from "./gameItem";
 
@@ -59,12 +60,23 @@ const FAKE_GAMES: IGame[] = [
 ];
 
 const GameList: React.FC = () => {
+  const [games, setGames] = useState<IGame[]>(FAKE_GAMES);
+
+  const addGame = (game: IGame) => {
+    setGames((prev) => {
+      return [game, ...prev];
+    });
+  };
+
+  console.log(games);
+  
+
   return (
     <>
-      <GameForm />
+      <GameForm addGameHandler={addGame} />
 
       <div className="flex gap-3 flex-wrap">
-        {FAKE_GAMES.map((game) => (
+        {games.map((game) => (
           <GameItem game={game} />
         ))}
       </div>
