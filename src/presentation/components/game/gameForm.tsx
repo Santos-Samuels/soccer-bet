@@ -1,5 +1,6 @@
 import { Button, Input, Select } from "..";
 import { useForm } from "react-hook-form";
+import { IGame } from "../../domain/model/game";
 
 const FAKE_GAMES: IGame[] = [
   {

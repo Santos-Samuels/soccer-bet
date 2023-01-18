@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IGame } from "../../domain/model/game";
 import GameForm from "./gameForm";
 import GameItem from "./gameItem";
 
