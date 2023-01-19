@@ -1,9 +1,6 @@
-import { ITeam } from "./team";
-
 export interface IBet {
   id: string;
-  teams: ITeam[];
-  score: Number[];  
+  matchId: string;
+  hint: Number[];  
   value: Number;
-  date: string;
 }

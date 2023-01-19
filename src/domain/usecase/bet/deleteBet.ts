@@ -1,8 +1,7 @@
-import { IBet } from "../../model/bet";
 import { IBetRepository } from "../../repository/betRepository";
 
 export interface IDeleteBet {
-  invoke(betId: string): Promise<IBet>;
+  invoke(betId: string): Promise<void>;
 }
 
 export class DeleteBetUserCase implements IDeleteBet {
@@ -12,7 +11,7 @@ export class DeleteBetUserCase implements IDeleteBet {
     this.betRepository = _betRepository;
   }
 
-  invoke(betId: string): Promise<IBet> {
+  invoke(betId: string): Promise<void> {
     return this.betRepository.deleteBet(betId);
   }
 }
