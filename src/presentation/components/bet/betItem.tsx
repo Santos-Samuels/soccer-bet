@@ -1,38 +1,58 @@
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { MATCHES } from "../../../data/mock/fakeMatches";
+import { IBet } from "../../../domain/model/bet";
+import { FiClock } from "react-icons/fi";
 
 const BetItem: React.FC<{ bet: IBet }> = ({ bet }) => {
-  const date = new Date(bet.date);
+  const match = MATCHES.find((item) => item.id === bet.matchId)!;
+  const date = new Date(match.date);
 
   return (
-    <article className="flex bg-neutral-700 rounded-lg py-2 px-3 gap-x-3 items-center">
-      <div className=" flex flex-col justify-center border-r border-neutral-600 pr-3 text-center min-h-full">
-        <p className="text-sm">{format(date, "EEEE", { locale: ptBR })}</p>
-        <p>{format(date, "HH:mm")}</p>
-        {/* <p>{format(date, "dd/MM/yyyy")}</p> */}
-      </div>
-
-      <section>
-        <div className="flex">
-          <div className="flex">
-            <img src={bet.teams[0].image} alt={bet.teams[0].name} width={15} />
-            <p className="ml-1">{bet.teams[0].name}</p>
-          </div>
-
-          <p className="mx-2">vs</p>
-
-          <div className="flex">
-            <img src={bet.teams[1].image} alt={bet.teams[1].name} width={15} />
-            <p className="ml-1">{bet.teams[1].name}</p>
-          </div>
+    <article>
+      <section className="flex flex-col bg-neutral-700 rounded-lg py-2 px-3 items-center">
+        <div className="flex justify-between border-b border-neutral-600 pb-1 w-full">
+          <p className="text-sm">{match.group}</p>
+          <p className="text-sm">
+            {format(date, "d")} {format(date, "LLL")} • {format(date, "HH:mm")}
+          </p>
         </div>
 
-        <div className="flex justify-between mt-3">
+        <div className="flex items-end my-4">
+          <div className="flex flex-col items-center">
+            <div className="w-12">
+              <img src={`/src/assets/${match.team1}.png`} alt={match.team1} />
+            </div>
+            <p className="mt-1">{match.team1}</p>
+          </div>
+
+          <div className="flex items-center mx-4 self-center bg-neutral-600 px-2 rounded-md">
+            <p className="font-bold text-2xl">{bet.hint[0]}</p>
+            <p className="mx-4">vs</p>
+            <p className="font-bold text-2xl">{bet.hint[1]}</p>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <div className="w-12">
+              <img src={`/src/assets/${match.team2}.png`} alt={match.team2} />
+            </div>
+            <p className="mt-1">{match.team2}</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="flex justify-between -mt-2 bg-neutral-600 rounded-md py-1 px-2">
           <p className="bg-neutral-600 px-1 rounded-md">
-            {bet.score[0]} x {bet.score[0]}
+            {bet.value.toLocaleString("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            })}
           </p>
 
-          <p>{bet.value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+          <div className="flex items-center">
+            <FiClock className="mr-1" />
+            <p className="text-sm">Aguardando</p>
+          </div>
         </div>
       </section>
     </article>

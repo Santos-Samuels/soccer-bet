@@ -1,10 +1,10 @@
-import { BetList, GameList } from "./components";
+import { BetList, MatchList } from "./components";
 
 function App() {
   return (
     <div className="m-5">
       <BetList />
-      <GameList />
+      <MatchList />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import BetItem from "./bet/betItem";
 import BetList from "./bet/betList";
-import GameItem from "./game/gameItem";
-import GameList from "./game/gameList";
+import MatchItem from "./match/MatchItem";
+import MatchList from "./match/MatchList";
 import Button from "./ui/button";
 import Input from "./ui/input";
 import Select from "./ui/select";
@@ -9,8 +9,8 @@ import Select from "./ui/select";
 export {
   BetItem,
   BetList,
-  GameItem,
-  GameList,
+  MatchItem,
+  MatchList,
   Input,
   Select,
   Button
