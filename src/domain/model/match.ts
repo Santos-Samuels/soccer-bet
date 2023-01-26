@@ -5,4 +5,5 @@ export interface IMatch {
   date: string;
   team1: string;
   team2: string;
+  status: "active" | "expired";
 }

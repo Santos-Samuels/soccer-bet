@@ -4,6 +4,7 @@ interface IProps extends React.ComponentPropsWithoutRef<"button"> {
   id?: string;
   type: "button" | "reset" | "submit" | undefined;
   text: string;
+  model?: "default" | "sm";
 }
 
 const Button: React.FC<IProps> = ({
@@ -12,6 +13,7 @@ const Button: React.FC<IProps> = ({
   id,
   type,
   text,
+  model,
   ...rest
 }) => {
   return (
@@ -20,7 +22,7 @@ const Button: React.FC<IProps> = ({
         {...rest}
         id={id}
         type={type}
-        className="bg-neutral-600 px-4 py-2 rounded-lg"
+        className={`bg-rose-500 hover:bg-rose-600 transition ease-in-out delay-100 rounded-lg ${model === "sm" ? "py-0.5 px-2" : "py-2 px-4"}`}
       >{text}</button>
     </div>
   );
