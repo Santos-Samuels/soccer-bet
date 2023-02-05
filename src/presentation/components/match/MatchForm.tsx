@@ -1,62 +1,68 @@
 import { Button, Input, Select } from "..";
 import { useForm } from "react-hook-form";
-
-const SELECT_OPTIONS: ISelectOption[] = [
-  {
-    value: "FLAMENGO",
-    name: "FLAMENGO",
-  },
-  {
-    value: "VASCO",
-    name: "VASCO",
-  },
-  {
-    value: "BAHIA",
-    name: "BAHIA",
-  },
-  {
-    value: "SAO-PAULO",
-    name: "SÃO PAULO",
-  },
-  {
-    value: "FLUMINENSE",
-    name: "FLUMINENSE",
-  },
-];
+import { IFormMatch } from "../../../domain/model/match";
 
 interface IProps {
-  addGameHandler: (game: IGame) => void;
+  addGameHandler: (game: IFormMatch) => Promise<void>;
 }
 
-interface IGameForm {
-  date: string;
-  firstTeam: string;
-  secondTeam: string;
-}
+const teams = [
+  "Catar",
+  "Equador",
+  "Holanda",
+  "Senegal",
+  "Estados Unidos",
+  "Inglaterra",
+  "Irã",
+  "País de Gales",
+  "Argentina",
+  "Arábia Saudita",
+  "México",
+  "Polônia",
+  "França",
+  "Dinamarca",
+  "Tunísia",
+  "Austrália",
+  "Espanha",
+  "Alemanha",
+  "Japão",
+  "Costa Rica",
+  "Bélgica",
+  "Canadá",
+  "Marrocos",
+  "Croácia",
+  "Brasil",
+  "Sérvia",
+  "Suíça",
+  "Camarões",
+  "Portugal",
+  "Gana",
+  "Uruguai",
+  "Coreia do Sul",
+];
+
+const groups = [
+  "Group A",
+  "Group B",
+  "Group C",
+  "Group D",
+  "Group E ",
+  "Group F",
+  "Group G",
+  "Group H",
+];
 
 const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<IGameForm>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    watch,
+  } = useForm<IFormMatch>();
 
-  const onSubmit = (data: IGameForm) => {
-    addGameHandler({
-      id: "sdsfdssd1fsd6f",
-      date: data.date,
-      teams: [
-        {
-          id: "sdsfdsff51fsd6f",
-          image:
-            "https://icons.veryicon.com/png/o/miscellaneous/site-icon-library/team-28.png",
-          name: data.firstTeam,
-        },
-        {
-          id: "sdsfdsff51fsd6f",
-          image:
-            "https://icons.veryicon.com/png/o/miscellaneous/site-icon-library/team-28.png",
-          name: data.secondTeam,
-        },
-      ],
-    });
-
+  const onSubmit = (data: IFormMatch) => {
+    addGameHandler(data);
     reset();
   };
 
@@ -66,34 +72,51 @@ const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
       className="bg-neutral-700 rounded-xl p-5 my-3"
     >
       <h1 className="font-semibold text-xl border-b border-neutral-600 pb-1">
-        Adicionar Jogo
+        Adicionar Partida
       </h1>
 
-      <div className="mt-5 flex flex-wrap items-start gap-3">
+      <div className="mt-5 flex flex-col sm:grid grid-cols-2 md:grid-cols-6 gap-5">
         <Input
           formRegister={register("date", { required: "Campo obrigatório" })}
           type="date"
-          label="Data do Evento"
+          label="Data"
           errorMessage={errors.date?.message}
         />
 
-        <div className="flex gap-3 items-end">
-          <Select
-            formRegister={register("firstTeam", {
-              required: "Campo obrigatório",
-            })}
-            label="Seleções Participantes"
-            options={SELECT_OPTIONS}
-          />
-          <Select
-            formRegister={register("secondTeam", {
-              required: "Campo obrigatório",
-            })}
-            options={SELECT_OPTIONS}
-          />
-        </div>
+        <Input
+          formRegister={register("time", { required: "Campo obrigatório" })}
+          type="time"
+          label="Hora"
+          errorMessage={errors.date?.message}
+        />
 
-        <Button type="submit" text="Adicionar" className="self-center" />
+        <Select
+          formRegister={register("group", {
+            required: "Campo obrigatório",
+          })}
+          label="Grupo"
+          options={groups}
+        />
+
+        <Select
+          formRegister={register("team1", {
+            required: "Campo obrigatório",
+          })}
+          label="Time 1"
+          options={teams.filter((team) => team !== watch("team2"))}
+        />
+
+        <Select
+          formRegister={register("team2", {
+            required: "Campo obrigatório",
+          })}
+          label="Time 2"
+          options={teams.filter((team) => team !== watch("team1"))}
+        />
+
+        <div className="sm:mt-5">
+          <Button type="submit" text="Adicionar" />
+        </div>
       </div>
     </form>
   );
