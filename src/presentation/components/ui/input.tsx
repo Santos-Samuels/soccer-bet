@@ -22,7 +22,7 @@ const Input: React.FC<IProps> = ({
   ...rest
 }) => {
   return (
-    <div className="w-max flex flex-col">
+    <div className="w-100 flex flex-col">
       <label htmlFor={id}>{label}</label>
       <input
         placeholder={placeholder}

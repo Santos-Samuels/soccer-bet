@@ -17,12 +17,12 @@ const Button: React.FC<IProps> = ({
   ...rest
 }) => {
   return (
-    <div className="w-max flex flex-col">
+    <div className="w-100 flex flex-col">
       <button
         {...rest}
         id={id}
         type={type}
-        className={`bg-rose-500 hover:bg-rose-600 transition ease-in-out delay-100 rounded-lg ${model === "sm" ? "py-0.5 px-2" : "py-2 px-4"}`}
+        className={`bg-yellow-500 hover:bg-yellow-600 transition ease-in-out delay-100 rounded-lg ${model === "sm" ? "py-0.5 px-2" : "py-2 px-4"}`}
       >{text}</button>
     </div>
   );
