@@ -1,9 +1,16 @@
 export interface IMatch {
   id: string;
-  round: string;
   group: string;
   date: string;
   team1: string;
   team2: string;
-  status: "active" | "expired";
+  isActive: boolean;
+}
+
+export interface IFormMatch {
+  group: string;
+  date: string;
+  team1: string;
+  team2: string;
+  time: string;
 }
