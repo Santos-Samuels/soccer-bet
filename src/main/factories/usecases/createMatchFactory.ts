@@ -1,5 +1,5 @@
 import { CreateMatchUseCase } from "@data/usecases/match/createMatch";
-import ICreateMatch from "@domain/usecases/createMatch";
+import ICreateMatch from "@domain/usecases/match/createMatch";
 import MatchHttpGateway from "@gateway/matchHttpGateway";
 import AxiosAdapter from "@infra/http/axiosAdapter";
 

@@ -1,7 +1,7 @@
 import { Button, Input, Select } from "..";
 import { useForm } from "react-hook-form";
 import { IInputMatch } from "@data/dto/input/match";
-import ICreateMatch from "@domain/usecases/createMatch";
+import ICreateMatch from "@domain/usecases/match/createMatch";
 import { useState } from "react";
 
 interface IProps {
