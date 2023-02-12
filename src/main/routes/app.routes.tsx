@@ -3,7 +3,6 @@ import PrivateUserRoute from "./user.routes";
 import PrivateAdminRoute from "./admin.routes";
 import {
   AccountPage,
-  AddMatchPage,
   AddResultPage,
   LoginPage,
   MyBetsPage,
@@ -32,7 +31,6 @@ const AppRoutes: React.FC = () => {
 
           <Route element={<PrivateAdminRoute />}>
             <Route path="/results/add" element={<AddResultPage />} />
-            <Route path="/matches/add" element={<AddMatchPage />} />
           </Route>
         </Route>
 

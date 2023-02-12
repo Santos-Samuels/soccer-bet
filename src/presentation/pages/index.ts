@@ -1,5 +1,4 @@
 import AccountPage from "./AccountPage";
-import AddMatchPage from "./AddMatchPage";
 import AddResultPage from "./AddResultPage";
 import LoginPage from "./LoginPage";
 import MatchesPage from "./MatchesPage";
@@ -13,7 +12,6 @@ import HomePage from "./HomePage";
 
 export {
   AccountPage,
-  AddMatchPage,
   AddResultPage,
   HomePage,
   LoginPage,
