@@ -113,7 +113,8 @@ const GameForm: React.FC<IProps> = ({ addHandler, getMatches }) => {
             required: "Campo obrigatório",
           })}
           label="Time 1"
-          options={teams.filter((team) => team !== watch("team2"))}
+          options={teams}
+          toDisableOption={watch("team2")}
           errorMessage={errors.team1?.message}
         />
 
@@ -122,7 +123,8 @@ const GameForm: React.FC<IProps> = ({ addHandler, getMatches }) => {
             required: "Campo obrigatório",
           })}
           label="Time 2"
-          options={teams.filter((team) => team !== watch("team1"))}
+          options={teams}
+          toDisableOption={watch("team1")}
           errorMessage={errors.team2?.message}
         />
 
