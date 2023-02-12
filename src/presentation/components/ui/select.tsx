@@ -10,7 +10,7 @@ interface IProps extends React.ComponentPropsWithoutRef<"select"> {
   type?: string;
   options: string[];
   defaultOption?: string;
-  formRegister: UseFormRegisterReturn;
+  formRegister?: UseFormRegisterReturn;
 }
 
 const Select: React.FC<IProps> = ({
@@ -36,9 +36,11 @@ const Select: React.FC<IProps> = ({
           errorMessage ? "border border-red-100" : ""
         }`}
       >
-        {defaultOption ? <option disabled selected value={defaultOption}>{defaultOption}</option> : <option disabled selected value="void"></option>}
+        {!defaultOption && (
+          <option disabled selected value=""></option>
+        )}
         {options.map((item) => (
-          <option value={item}>{item}</option>
+          <option value={item} selected={item === defaultOption}>{item}</option>
         ))}
       </select>
 
