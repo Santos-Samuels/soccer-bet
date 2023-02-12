@@ -1,52 +1,29 @@
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { IFormMatch, IMatch } from "../../../domain/model/match";
-import MatchHttpGateway from "../../../gateway/matchHttpGateway";
-import AxiosAdapter from "../../../infra/http/axiosAdapter";
+import { IMatch } from "../../../domain/model/match";
+import IToggleStatusMatch from "../../../domain/usecases/toggleStatusMatch";
 import Select from "../ui/select";
-import GameForm from "./MatchForm";
 import MatchItem from "./MatchItem";
 
 type ISortOptions = "todos" | "ativo" | "inativo";
 const sortOptions = ["Todos", "Ativo", "Inativo"];
 
-const MetchList: React.FC = () => {
-  const [matches, setMatches] = useState<IMatch[]>([]);
+type Props = {
+  matches: IMatch[];
+  getMatches: () => Promise<void>;
+  toggleStatusMatchFactory: IToggleStatusMatch;
+};
+
+const MetchList: React.FC<Props> = ({
+  matches,
+  getMatches,
+  toggleStatusMatchFactory,
+}) => {
   const [filteredMatches, setFilteredMatches] = useState<IMatch[]>([]);
   const [filter, setFilter] = useState<ISortOptions>("todos");
 
-  const httpClient = new AxiosAdapter();
-  const matchGateway = new MatchHttpGateway(
-    httpClient,
-    "http://localhost:3000"
-  );
-
-  const add = async (match: IFormMatch) => {
-    try {
-      if (
-        matches.some((el) => el.team1 === match.team1 && el.team2 === el.team2)
-      ) {
-        throw new Error();
-      }
-
-      const newMatch: IMatch = {
-        id: uuidv4(),
-        ...match,
-        isActive: true,
-      };
-
-      console.log(newMatch);
-
-      await matchGateway.addMatch(newMatch);
-      console.log("Match successfully added");
-    } catch (error) {
-      console.log("Match already exists");
-    }
-  };
-
-  const list = async () => {
-    const response = await matchGateway.listMatches();
-    setMatches(response);
+  const toggleStatusHandler = async (matchId: string) => {
+    await toggleStatusMatchFactory.execute(matchId);
+    await getMatches();
   };
 
   const filterHandler = (filter: ISortOptions) => {
@@ -66,22 +43,19 @@ const MetchList: React.FC = () => {
   };
 
   useEffect(() => {
-    list();
-  }, []);
-
-  useEffect(() => {
     filterHandler(filter);
   }, [filter]);
 
-  console.log(filter);
-  console.log(filteredMatches);
+  if (matches.length === 0) {
+    return (
+      <h3 className="text-2xl mt-24 text-center">
+        Nenhuma partida encontrada!
+      </h3>
+    );
+  }
 
   return (
     <>
-      <div className="mb-8">
-        <GameForm addGameHandler={add} />
-      </div>
-
       <div className="w-48">
         <Select
           label="Filtrar por"
@@ -94,11 +68,29 @@ const MetchList: React.FC = () => {
       </div>
 
       <div className="flex gap-3 flex-wrap mt-5 justify-center">
-        {filteredMatches.length !== 0
-          ? filteredMatches.map((match) => (
-              <MatchItem match={match} key={match.id} />
+        {filter !== "todos" ? (
+          filteredMatches.length > 0 ? (
+            filteredMatches.map((match) => (
+              <MatchItem
+                match={match}
+                key={match.id}
+                toggleStatus={() => toggleStatusHandler(match.id)}
+              />
             ))
-          : matches.map((match) => <MatchItem match={match} key={match.id} />)}
+          ) : (
+            <h3 className="text-2xl mt-5 text-center">
+              Nenhuma partida encontrada!
+            </h3>
+          )
+        ) : (
+          matches.map((match) => (
+            <MatchItem
+              match={match}
+              key={match.id}
+              toggleStatus={() => toggleStatusHandler(match.id)}
+            />
+          ))
+        )}
       </div>
     </>
   );
