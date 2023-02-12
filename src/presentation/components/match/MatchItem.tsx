@@ -2,14 +2,25 @@ import { format } from "date-fns";
 import { IMatch } from "../../../domain/model/match";
 import Button from "../ui/button";
 import { FaTrash } from "react-icons/fa";
+import { useState } from "react";
 
-const MatchItem: React.FC<{ match: IMatch }> = ({ match }) => {
+type Props = {
+  match: IMatch;
+  toggleStatus: () => Promise<void>;
+};
+
+const MatchItem: React.FC<Props> = ({ match, toggleStatus }) => {
   const date = new Date(match.date);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const toggleStatusHandler = async () => {
+    setIsLoading(true);
+    await toggleStatus();
+    setIsLoading(false);
+  };
 
   return (
-    <article
-      className="bg-neutral-700 rounded-lg py-2 px-3 w-60"
-    >
+    <article className="bg-neutral-700 rounded-lg py-2 px-3 w-60">
       <section>
         <div className="flex justify-between mb-2">
           <p>{match.group}</p>
@@ -38,22 +49,22 @@ const MatchItem: React.FC<{ match: IMatch }> = ({ match }) => {
         </div>
 
         <div className="mt-2 flex justify-between items-center self-end">
-          <p className={`${match.isActive ? "bg-green-700" : "bg-yellow-800"} px-1 rounded-md`}>
+          <p
+            className={`${
+              match.isActive ? "bg-green-700" : "bg-yellow-800"
+            } px-1 rounded-md`}
+          >
             {match.isActive ? "Ativo" : "Inativo"}
           </p>
 
-          <div className="flex items-center gap-4">
-            <span className="cursor-pointer">
-              <FaTrash />
-            </span>
-            
-            <Button
-              type="submit"
-              text={match.isActive ? "Encerrar" : "Ativar"}
-              className="self-center"
-              model="sm"
-            />
-          </div>
+          <Button
+            type="submit"
+            text={match.isActive ? "Encerrar" : "Ativar"}
+            className="self-center"
+            model="sm"
+            isLoading={isLoading}
+            onClick={toggleStatusHandler}
+          />
         </div>
       </section>
     </article>
