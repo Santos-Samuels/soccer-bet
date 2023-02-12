@@ -1,5 +1,5 @@
 import { ListMatchesUseCase } from "@data/usecases/match/listMatches";
-import IListMatches from "@domain/usecases/listMatches";
+import IListMatches from "@domain/usecases/match/listMatches";
 import MatchHttpGateway from "@gateway/matchHttpGateway";
 import AxiosAdapter from "@infra/http/axiosAdapter";
 
