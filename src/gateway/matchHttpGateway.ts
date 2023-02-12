@@ -1,27 +1,26 @@
 import { IMatch } from "../domain/model/match";
 import { HttpClient } from "../infra/http/httpClient";
-import MatchGateway from "./MatchGateway";
+import MatchGateway from "../domain/gateway/matchGateway";
+import { baseUrl } from "../../API/baseUrl"
 
 export default class MatchHttpGateway implements MatchGateway {
+  constructor(readonly httpClient: HttpClient) {}
 
-  constructor(readonly httpClient: HttpClient, readonly baseUrl: string) {}
+  async createMatch(match: IMatch): Promise<void> {
+    await this.httpClient.post(`${baseUrl}/matches`, match)
+    return;
+  }
+
+  async getMatch(matchId: string): Promise<IMatch> {
+    return await this.httpClient.get(`${baseUrl}/matches/${matchId}`)
+  }
 
   async listMatches(): Promise<IMatch[]> {
-    return await this.httpClient.get(`${this.baseUrl}/matches`)
+    return await this.httpClient.get(`${baseUrl}/matches`)
   }
 
-  async addMatch(match: IMatch): Promise<void> {
-    await this.httpClient.post(`${this.baseUrl}/matches`, match)
-    return;
-  }
-
-  async updateMatch(match: Omit<IMatch, "id">, matchId: string): Promise<void> {
-    await this.httpClient.put(`${this.baseUrl}/matches/${matchId}`, match)
-    return;
-  }
-
-  async removeMatch(matchId: string): Promise<void> {
-    await this.httpClient.delete(`${this.baseUrl}/matches${matchId}`)
+  async toggleStatusMatch(match: IMatch): Promise<void> {
+    await this.httpClient.put(`${baseUrl}/matches/${match.id}`, match)
     return;
   }
 }
