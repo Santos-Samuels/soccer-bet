@@ -1,5 +1,6 @@
 import BetItem from "./bet/betItem";
 import BetList from "./bet/betList";
+import PageContainer from "./layout/PageContainer";
 import MatchItem from "./match/MatchItem";
 import MatchList from "./match/MatchList";
 import Button from "./ui/button";
@@ -13,5 +14,6 @@ export {
   MatchList,
   Input,
   Select,
-  Button
+  Button,
+  PageContainer
 }
