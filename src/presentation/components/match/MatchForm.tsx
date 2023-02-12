@@ -1,9 +1,12 @@
 import { Button, Input, Select } from "..";
 import { useForm } from "react-hook-form";
-import { IFormMatch } from "../../../domain/model/match";
+import { IInputMatch } from "../../../data/dto/input/match";
+import ICreateMatch from "../../../domain/usecases/createMatch";
+import { useState } from "react";
 
 interface IProps {
-  addGameHandler: (game: IFormMatch) => Promise<void>;
+  addHandler: ICreateMatch;
+  getMatches: () => Promise<void>;
 }
 
 const teams = [
@@ -52,18 +55,24 @@ const groups = [
   "Group H",
 ];
 
-const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
+const GameForm: React.FC<IProps> = ({ addHandler, getMatches }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
     watch,
-  } = useForm<IFormMatch>();
+  } = useForm<IInputMatch>({
+    defaultValues: { team1: "", team2: "", group: "" },
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const onSubmit = (data: IFormMatch) => {
-    addGameHandler(data);
+  const onSubmit = async (data: IInputMatch) => {
+    setIsLoading(true);
+    await addHandler.execute(data);
     reset();
+    setIsLoading(false);
+    await getMatches();
   };
 
   return (
@@ -87,7 +96,7 @@ const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
           formRegister={register("time", { required: "Campo obrigatório" })}
           type="time"
           label="Hora"
-          errorMessage={errors.date?.message}
+          errorMessage={errors.time?.message}
         />
 
         <Select
@@ -96,6 +105,7 @@ const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
           })}
           label="Grupo"
           options={groups}
+          errorMessage={errors.group?.message}
         />
 
         <Select
@@ -104,6 +114,7 @@ const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
           })}
           label="Time 1"
           options={teams.filter((team) => team !== watch("team2"))}
+          errorMessage={errors.team1?.message}
         />
 
         <Select
@@ -112,10 +123,11 @@ const GameForm: React.FC<IProps> = ({ addGameHandler }) => {
           })}
           label="Time 2"
           options={teams.filter((team) => team !== watch("team1"))}
+          errorMessage={errors.team2?.message}
         />
 
         <div className="sm:mt-5">
-          <Button type="submit" text="Adicionar" />
+          <Button type="submit" text="Adicionar" isLoading={isLoading} />
         </div>
       </div>
     </form>
