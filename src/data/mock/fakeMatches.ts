@@ -1,4 +1,4 @@
-import { IMatch } from "../../domain/model/match";
+import { IMatch } from "@domain/model/match";
 
 export const MATCHES: IMatch[] = [
   {

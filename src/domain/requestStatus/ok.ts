@@ -1,4 +1,4 @@
-import { HttpStatusCode } from "../../data/protocols/http/http-client";
+import { HttpStatusCode } from "@data/protocols/http/http-client";
 
 export class Successful extends Error {
   code = HttpStatusCode.ok;

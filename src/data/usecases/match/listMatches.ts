@@ -1,7 +1,7 @@
-import { IMatch } from "../../../domain/model/match";
-import RequestStatus from "../../../domain/requestStatus/requestStatus";
-import MatchHttpGateway from "../../../gateway/matchHttpGateway";
-import IListMatches from "../../../domain/usecases/listMatches"
+import { IMatch } from "@domain/model/match";
+import RequestStatus from "@domain/requestStatus/requestStatus";
+import MatchHttpGateway from "@gateway/matchHttpGateway";
+import IListMatches from "@domain/usecases/listMatches"
 
 export class ListMatchesUseCase implements IListMatches {
   private matchGateway: MatchHttpGateway;

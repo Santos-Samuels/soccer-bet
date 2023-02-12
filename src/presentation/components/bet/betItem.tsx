@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { MATCHES } from "../../../data/mock/fakeMatches";
-import { IBet } from "../../../domain/model/bet";
+import { MATCHES } from "@data/mock/fakeMatches";
+import { IBet } from "@domain/model/bet";
 import { FiClock } from "react-icons/fi";
 
 const BetItem: React.FC<{ bet: IBet }> = ({ bet }) => {

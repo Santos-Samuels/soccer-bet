@@ -1,6 +1,6 @@
-import { IMatch } from "../domain/model/match";
-import { HttpClient } from "../infra/http/httpClient";
-import MatchGateway from "../domain/gateway/matchGateway";
+import { IMatch } from "@domain/model/match";
+import { HttpClient } from "@infra/http/httpClient";
+import MatchGateway from "@domain/gateway/matchGateway";
 import { baseUrl } from "../../API/baseUrl"
 
 export default class MatchHttpGateway implements MatchGateway {

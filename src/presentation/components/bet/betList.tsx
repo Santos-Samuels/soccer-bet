@@ -1,4 +1,4 @@
-import { FAKE_BETS } from "../../../data/mock/fakeBets";
+import { FAKE_BETS } from "@data/mock/fakeBets";
 import BetItem from "./betItem";
 
 const BetList: React.FC = () => {

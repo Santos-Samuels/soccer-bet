@@ -1,7 +1,7 @@
-import { IMatch } from "../../../domain/model/match";
-import RequestStatus from "../../../domain/requestStatus/requestStatus";
-import IToggleStatusMatch from "../../../domain/usecases/toggleStatusMatch";
-import MatchHttpGateway from "../../../gateway/matchHttpGateway";
+import { IMatch } from "@domain/model/match";
+import RequestStatus from "@domain/requestStatus/requestStatus";
+import IToggleStatusMatch from "@domain/usecases/toggleStatusMatch";
+import MatchHttpGateway from "@gateway/matchHttpGateway";
 
 export class ToggleStatusMatchUseCase implements IToggleStatusMatch {
   private matchGateway: MatchHttpGateway;

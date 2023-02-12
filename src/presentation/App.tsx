@@ -1,5 +1,4 @@
-import AppRoutes from "../main/routes/app.routes";
-import { BetList, MatchList } from "./components";
+import AppRoutes from "@main/routes/app.routes";
 
 function App() {
   return (

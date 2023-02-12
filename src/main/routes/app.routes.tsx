@@ -11,7 +11,7 @@ import {
   ResultsPage,
   ToBetPage,
   UnauthorizedPage,
-} from "../../presentation/pages";
+} from "@presentation/pages";
 import { MatchesPageFactory } from "../factories/pages/matchesPageFactory";
 
 const AppRoutes: React.FC = () => {

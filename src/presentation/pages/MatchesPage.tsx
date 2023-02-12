@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
-import { IMatch } from "../../domain/model/match";
-import ICreateMatch from "../../domain/usecases/createMatch";
-import IListMatches from "../../domain/usecases/listMatches";
-import IToggleStatusMatch from "../../domain/usecases/toggleStatusMatch";
+import { IMatch } from "@domain/model/match";
+import ICreateMatch from "@domain/usecases/createMatch";
+import IListMatches from "@domain/usecases/listMatches";
+import IToggleStatusMatch from "@domain/usecases/toggleStatusMatch";
 import { MatchList, PageContainer } from "../components";
 import GameForm from "../components/match/MatchForm";
 

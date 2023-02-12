@@ -1,7 +1,6 @@
 import { format } from "date-fns";
-import { IMatch } from "../../../domain/model/match";
+import { IMatch } from "@domain/model/match";
 import Button from "../ui/button";
-import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 
 type Props = {

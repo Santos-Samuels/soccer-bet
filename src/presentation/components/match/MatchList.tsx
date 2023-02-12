@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { IMatch } from "../../../domain/model/match";
-import IToggleStatusMatch from "../../../domain/usecases/toggleStatusMatch";
+import { IMatch } from "@domain/model/match";
+import IToggleStatusMatch from "@domain/usecases/toggleStatusMatch";
 import Select from "../ui/select";
 import MatchItem from "./MatchItem";
 

@@ -1,4 +1,4 @@
-import { IBet } from "../../domain/model/bet";
+import { IBet } from "@domain/model/bet";
 
 export const FAKE_BETS: IBet[] = [
   {

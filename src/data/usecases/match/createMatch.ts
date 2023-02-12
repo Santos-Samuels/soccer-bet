@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import { IInputMatch } from "../../dto/input/match";
-import { IMatch } from "../../../domain/model/match";
-import RequestStatus from "../../../domain/requestStatus/requestStatus";
-import MatchHttpGateway from "../../../gateway/matchHttpGateway";
-import ICreateMatch from "../../../domain/usecases/createMatch";
+import { IInputMatch } from "@data/dto/input/match";
+import { IMatch } from "@domain/model/match";
+import RequestStatus from "@domain/requestStatus/requestStatus";
+import MatchHttpGateway from "@gateway/matchHttpGateway";
+import ICreateMatch from "@domain/usecases/createMatch";
 
 export class CreateMatchUseCase implements ICreateMatch {
   private matchGateway: MatchHttpGateway;
