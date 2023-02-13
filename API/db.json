@@ -419,5 +419,26 @@
     "Gana",
     "Uruguai",
     "Coreia do Sul"
+  ],
+
+  "bets": [
+    {
+      "id": "8d70ba2d-e4d0-4f19-8aa2-a37724c3cde9",
+      "matchId": "96920805-dfc6-4a3f-9296-2be8a0a949f5",
+      "value": 5.3,
+      "hint": [3, 0]
+    },
+    {
+      "id": "98668b05-58d3-4b2b-ae60-9a23d4ae2718",
+      "matchId": "9c9778c7-d706-464d-8a6b-944030306c03",
+      "value": 5.3,
+      "hint": [3, 0]
+    },
+    {
+      "id": "0b6bfadb-119f-4e10-9c67-144e879050a4",
+      "matchId": "a8e31341-1e2f-4b16-b82b-f657e729e5ed",
+      "value": 5.3,
+      "hint": [3, 0]
+    }
   ]
 }
