@@ -12,7 +12,7 @@ import {
   ToBetPage,
   UnauthorizedPage,
 } from "@presentation/pages";
-import { MatchesPageFactory } from "../factories/pages/matchesPageFactory";
+import { MatchesPageFactory, MyBetsPageFactory } from "../factories/pages";
 
 const AppRoutes: React.FC = () => {
   return (
@@ -25,7 +25,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/" element={<h1>HOMEPAGE</h1>} />
           <Route path="/matches" element={<MatchesPageFactory />} />
           <Route path="/results" element={<ResultsPage />} />
-          <Route path="/my-bets" element={<MyBetsPage />} />
+          <Route path="/my-bets" element={<MyBetsPageFactory />} />
           <Route path="/to-bet" element={<ToBetPage />} />
           <Route path="/account" element={<AccountPage />} />
 
