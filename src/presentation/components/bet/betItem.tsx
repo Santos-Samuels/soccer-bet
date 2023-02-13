@@ -1,11 +1,17 @@
 import { format } from "date-fns";
-import { MATCHES } from "@data/mock/fakeMatches";
 import { IBet } from "@domain/model/bet";
 import { FiClock } from "react-icons/fi";
+import { IMatch } from "@domain/model/match";
+import { ptBR } from "date-fns/locale";
 
-const BetItem: React.FC<{ bet: IBet }> = ({ bet }) => {
-  const match = MATCHES.find((item) => item.id === bet.matchId)!;
+const BetItem: React.FC<{ bet: IBet, match: IMatch }> = ({ bet, match }) => {
   const date = new Date(match.date);
+
+  const formatToDate = (time: Date, pattern: string) => {
+    return format(time, pattern, {
+      locale: ptBR,
+    });
+  };
 
   return (
     <article>
@@ -13,7 +19,7 @@ const BetItem: React.FC<{ bet: IBet }> = ({ bet }) => {
         <div className="flex justify-between border-b border-neutral-600 pb-1 w-full">
           <p className="text-sm">{match.group}</p>
           <p className="text-sm">
-            {format(date, "d")} {format(date, "LLL")} • {format(date, "HH:mm")}
+            {formatToDate(date, "d")} {formatToDate(date, "LLL")} • {formatToDate(date, "HH:mm")}
           </p>
         </div>
 
@@ -26,9 +32,9 @@ const BetItem: React.FC<{ bet: IBet }> = ({ bet }) => {
           </div>
 
           <div className="flex items-center mx-4 self-center bg-neutral-600 px-2 rounded-md">
-            <p className="font-bold text-2xl">{bet.hint[0]}</p>
+            <strong className="font-bold text-2xl">{bet.hint[0].toString()}</strong>
             <p className="mx-4">vs</p>
-            <p className="font-bold text-2xl">{bet.hint[1]}</p>
+            <strong className="font-bold text-2xl">{bet.hint[1].toString()}</strong>
           </div>
 
           <div className="flex flex-col items-center">
