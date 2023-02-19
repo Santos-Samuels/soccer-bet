@@ -1,14 +1,16 @@
-import { BeatLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
-interface IProps extends React.ComponentPropsWithoutRef<"button"> {
+interface IProps
+  extends React.ComponentPropsWithoutRef<"button">,
+    React.PropsWithChildren {
   isError?: boolean;
   errorMessage?: string;
   id?: string;
   type: "button" | "reset" | "submit" | undefined;
-  text: string;
+  text?: string;
   model?: "default" | "sm";
   isLoading?: boolean;
-  bold?: boolean
+  bold?: boolean;
 }
 
 const Button: React.FC<IProps> = ({
@@ -18,19 +20,28 @@ const Button: React.FC<IProps> = ({
   type,
   text,
   model,
-  bold,
+  bold = true,
   isLoading,
+  children,
   ...rest
 }) => {
   return (
-    <div className="w-100 flex flex-col">
-      <button
-        {...rest}
-        id={id}
-        type={type}
-        disabled={isLoading}
-        className={`bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-600 transition ease-in-out delay-100 rounded-lg ${model === "sm" ? "py-0.5 px-2" : "py-2 px-4"} ${bold && "font-bold"}`}
-      >{isLoading ? <BeatLoader color="#fff" size={model === "sm" ? 10 : undefined} /> : text}</button>
+    <div className="w-100 flex flex-col items-center">
+      {isLoading ? (
+        <ClipLoader color="#fff" size={model === "sm" ? 18 : undefined} />
+      ) : (
+        <button
+          {...rest}
+          id={id}
+          type={type}
+          disabled={isLoading}
+          className={`bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-600 transition ease-in-out delay-100 rounded-lg ${
+            model === "sm" ? "py-0.5 px-2" : "py-2 px-4"
+          } ${bold && model !== "sm" && "font-bold"}`}
+        >
+          {children ? children : text}
+        </button>
+      )}
     </div>
   );
 };

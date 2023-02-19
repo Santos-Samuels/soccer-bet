@@ -1,13 +1,9 @@
 import { Button, Input, Select } from "..";
 import { useForm } from "react-hook-form";
 import { IInputMatch } from "@data/dto/input/match";
-import ICreateMatch from "@domain/usecases/match/createMatch";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AppFacade from "@infra/facade";
-
-interface IProps {
-  getMatches: () => Promise<void>;
-}
+import { AppContext } from "@presentation/context";
 
 const teams = [
   "Catar",
@@ -55,9 +51,9 @@ const groups = [
   "Group H",
 ];
 
-const appFacade = new AppFacade();
+const { createMatch } = new AppFacade();
 
-const GameForm: React.FC<IProps> = ({ getMatches }) => {
+const GameForm: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -68,10 +64,11 @@ const GameForm: React.FC<IProps> = ({ getMatches }) => {
     defaultValues: { team1: "", team2: "", group: "" },
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { getMatches } = useContext(AppContext);
 
   const onSubmit = async (data: IInputMatch) => {
     setIsLoading(true);
-    await appFacade.createMatch().execute(data);
+    await createMatch().execute(data);
     reset();
     setIsLoading(false);
     await getMatches();

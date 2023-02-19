@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn } from "react-hook-form";
-import ErrorMessage from "./errorMessage";
+import ErrorMessage from "./ErrorMessage";
 
 interface IProps extends React.ComponentPropsWithoutRef<"select"> {
   label?: string;

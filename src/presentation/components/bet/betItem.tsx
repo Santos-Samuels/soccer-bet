@@ -57,7 +57,7 @@ const BetItem: React.FC<{ bet: IBet, match: IMatch }> = ({ bet, match }) => {
 
           <div className="flex items-center">
             <FiClock className="mr-1" />
-            <p className="text-sm">Aguardando</p>
+            <p className="text-sm">Sem placar</p>
           </div>
         </div>
       </section>

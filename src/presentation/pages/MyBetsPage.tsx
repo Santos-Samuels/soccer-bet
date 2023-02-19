@@ -1,47 +1,38 @@
 import { IBet } from "@domain/model/bet";
 import { IMatch } from "@domain/model/match";
 import AppFacade from "@infra/facade";
-import { BetList, PageContainer } from "@presentation/components";
-import { useEffect, useState } from "react";
+import { BetList, Button, PageContainer } from "@presentation/components";
+import BetForm from "@presentation/components/bet/BetForm";
+import { AppContext } from "@presentation/context";
+import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 
 const appFacade = new AppFacade();
 
 const MyBetsPage: React.FC = () => {
-  const [bets, setBets] = useState<IBet[]>([]);
-  const [matches, setMatches] = useState<IMatch[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const getData = async () => {
-    setIsLoading(true);
-    try {
-      const matchesItems: IMatch[] = [];
-      const betsResponse = await appFacade.listBets().execute();
-
-      for (let i = 0; i < betsResponse.length; i++) {
-        const item = betsResponse[i];
-        const matchResponse = await appFacade.getMatch().execute(item.matchId);
-        matchesItems.push(matchResponse);
-      }
-
-      setBets(betsResponse);
-      setMatches(matchesItems);
-    } catch (error) {
-      setBets([]);
-    }
-    setIsLoading(false);
-  };
+  const { currentMatch, getBets, isLoading, matches, bets } = useContext(AppContext);
 
   useEffect(() => {
-    getData();
+    getBets();
   }, []);
 
   return (
     <PageContainer>
-      <div className="border-b pb-1 border-gray-400 mb-8">
+      {currentMatch && (
+        <div className="mb-8">
+          <BetForm />
+        </div>
+      )}
+
+      <div className="border-b pb-1 border-gray-400 flex gap-5 justify-between items-end mb-8">
         <h1 className="text-xl md:text-3xl text-gray-400 font-bold">
           Minhas Apostas
         </h1>
+
+        {!currentMatch && <Link to='/matches'>
+          <Button type="button" text="Fazer Aposta" />
+        </Link>}
       </div>
 
       {!isLoading && bets.length > 0 ? (

@@ -1,12 +1,11 @@
-import { IMatch } from "@domain/model/match";
+import { AppContext } from "@presentation/context";
+import { useContext } from "react";
 import MatchItem from "./MatchItem";
 
-type Props = {
-  matches: IMatch[];
-  toggleStatusHandler: (matchId: string) => Promise<void>;
-};
 
-const MetchList: React.FC<Props> = ({ matches, toggleStatusHandler }) => {
+const MetchList: React.FC = () => {
+  const { matches } = useContext(AppContext)
+  
   if (matches.length === 0) {
     return (
       <h3 className="text-2xl mt-24 text-center">
@@ -22,7 +21,6 @@ const MetchList: React.FC<Props> = ({ matches, toggleStatusHandler }) => {
           <MatchItem
             match={match}
             key={match.id}
-            toggleStatus={() => toggleStatusHandler(match.id)}
           />
         ))}
       </div>
