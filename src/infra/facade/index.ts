@@ -6,6 +6,7 @@ import { ListMatchesUseCase } from "@data/usecases/match/listMatches";
 import { ToggleStatusMatchUseCase } from "@data/usecases/match/toggleStatusMatch";
 import { CreateUserUseCase } from "@data/usecases/user/createUser";
 import { GetUserUseCase } from "@data/usecases/user/getUser";
+import { LoginUserUseCase } from "@data/usecases/user/loginUser";
 import BetHttpGateway from "@gateway/betHttpGateway";
 import MatchHttpGateway from "@gateway/matchHttpGateway";
 import UserHttpGateway from "@gateway/userHttpGateway";
@@ -25,4 +26,5 @@ export default class AppFacade {
   toggleStatusMatch = () => new ToggleStatusMatchUseCase(this.matchGateway);
   createUser = () => new CreateUserUseCase(this.userGateway);
   getUser = () => new GetUserUseCase(this.userGateway);
+  loginUser = () => new LoginUserUseCase(this.userGateway);
 }
