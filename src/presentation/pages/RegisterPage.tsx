@@ -1,7 +1,7 @@
 import { IInputUser } from "@data/dto/input/user";
 import AppFacade from "@infra/facade";
 import { Button, Input } from "@presentation/components";
-import ErrorMessage from "@presentation/components/ui/errorMessage";
+import ErrorMessage from "@presentation/components/ui/ErrorMessage";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
