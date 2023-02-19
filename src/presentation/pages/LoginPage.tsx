@@ -1,7 +1,7 @@
 import { IInputUserLogin } from "@data/dto/input/user";
 import AppFacade from "@infra/facade";
 import { Button, Input } from "@presentation/components";
-import ErrorMessage from "@presentation/components/ui/errorMessage";
+import ErrorMessage from "@presentation/components/ui/ErrorMessage";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +25,8 @@ const LoginPage: React.FC = () => {
 
     try {
       const user = await loginUser().execute(data);
-      localStorage.setItem("TOKEN", user.token!);
+      localStorage.setItem("token", user.token!);
+      localStorage.setItem("id", user.id);
 
       reset();
       navigate("/");
