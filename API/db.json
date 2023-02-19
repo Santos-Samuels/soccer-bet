@@ -7,12 +7,11 @@
       "id": "1199b6e2-37cc-468a-8c3b-7c980b89723f",
       "isAdmin": false
     },
-
     {
       "name": "Samuel Santos",
       "email": "admin@teste.com",
       "password": "123",
-      "id": "1199b6e2-37cc-468a-8c3b-7c980b89723f",
+      "id": "1199b6e2-37cc-468a-8c3b-7c980b33723f",
       "isAdmin": true
     }
   ],
@@ -31,7 +30,7 @@
       "date": "2022-11-21",
       "team1": "Senegal",
       "team2": "Holanda",
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "bd5702da-b68e-4d6c-907f-d2255820a3df",
@@ -39,7 +38,7 @@
       "date": "2022-11-25",
       "team1": "Catar",
       "team2": "Senegal",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "271c6dfe-2aac-41ea-a888-a61f8d5139c5",
@@ -47,7 +46,7 @@
       "date": "2022-11-25",
       "team1": "Holanda",
       "team2": "Equador",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "23b41d79-45f7-4a90-b22b-8102ded55fd1",
@@ -55,7 +54,7 @@
       "date": "2022-11-29",
       "team1": "Equador",
       "team2": "Senegal",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "fb05ec05-e346-4a9b-a36f-bbc158d7c55a",
@@ -207,7 +206,7 @@
       "date": "2022-11-30",
       "team1": "Tunísia",
       "team2": "França",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "73ed367d-4af3-49ee-9b6b-98f4dc2ceafb",
@@ -463,6 +462,26 @@
         3,
         0
       ]
+    },
+    {
+      "matchId": "bd5702da-b68e-4d6c-907f-d2255820a3df",
+      "hint": [
+        "1",
+        "2"
+      ],
+      "userId": "1199b6e2-37cc-468a-8c3b-7c980b89723f",
+      "id": "9a3dbd6f-f6ac-4408-bb44-92a4d0d09ea1",
+      "value": 5.3
+    },
+    {
+      "matchId": "bd5702da-b68e-4d6c-907f-d2255820a3df",
+      "hint": [
+        "2",
+        "0"
+      ],
+      "userId": "1199b6e2-37cc-468a-8c3b-7c980b89723f",
+      "id": "2911bf37-0808-49d9-aabe-944b4018d4ad",
+      "value": 5.3
     }
   ]
 }
