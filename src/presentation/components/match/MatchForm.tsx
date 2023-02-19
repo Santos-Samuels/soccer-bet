@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { IInputMatch } from "@data/dto/input/match";
 import ICreateMatch from "@domain/usecases/match/createMatch";
 import { useState } from "react";
+import AppFacade from "@infra/facade";
 
 interface IProps {
-  addHandler: ICreateMatch;
   getMatches: () => Promise<void>;
 }
 
@@ -55,7 +55,9 @@ const groups = [
   "Group H",
 ];
 
-const GameForm: React.FC<IProps> = ({ addHandler, getMatches }) => {
+const appFacade = new AppFacade();
+
+const GameForm: React.FC<IProps> = ({ getMatches }) => {
   const {
     register,
     handleSubmit,
@@ -69,7 +71,7 @@ const GameForm: React.FC<IProps> = ({ addHandler, getMatches }) => {
 
   const onSubmit = async (data: IInputMatch) => {
     setIsLoading(true);
-    await addHandler.execute(data);
+    await appFacade.createMatch().execute(data);
     reset();
     setIsLoading(false);
     await getMatches();

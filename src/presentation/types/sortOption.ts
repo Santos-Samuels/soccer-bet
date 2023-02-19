@@ -1,0 +1,1 @@
+export type ISortOptions = "todos" | "ativo" | "inativo";

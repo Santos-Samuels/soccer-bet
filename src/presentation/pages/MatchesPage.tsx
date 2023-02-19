@@ -1,26 +1,15 @@
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 import { IMatch } from "@domain/model/match";
-import ICreateMatch from "@domain/usecases/match/createMatch";
-import IListMatches from "@domain/usecases/match/listMatches";
-import IToggleStatusMatch from "@domain/usecases/match/toggleStatusMatch";
 import { MatchList, PageContainer, Select } from "../components";
 import GameForm from "../components/match/MatchForm";
+import { ISortOptions } from "@presentation/types/sortOption";
+import AppFacade from "@infra/facade";
 
-type Props = {
-  listMatches: IListMatches;
-  createMatch: ICreateMatch;
-  toggleStatusMatchFactory: IToggleStatusMatch;
-};
-
-type ISortOptions = "todos" | "ativo" | "inativo";
+const appFacade = new AppFacade()
 const sortOptions = ["Todos", "Ativo", "Inativo"];
 
-const MatchesPage: React.FC<Props> = ({
-  listMatches,
-  createMatch,
-  toggleStatusMatchFactory,
-}) => {
+const MatchesPage: React.FC = () => {
   const [matches, setMatches] = useState<IMatch[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [filter, setFilter] = useState<ISortOptions>("todos");
@@ -29,7 +18,7 @@ const MatchesPage: React.FC<Props> = ({
   const getMatches = async () => {
     setIsLoading(true);
     try {
-      const response = await listMatches.execute();
+      const response = await appFacade.listMatches().execute();
       setMatches(response);
     } catch (error) {
       setMatches([]);
@@ -54,7 +43,7 @@ const MatchesPage: React.FC<Props> = ({
   };
 
   const toggleStatusHandler = async (matchId: string) => {
-    await toggleStatusMatchFactory.execute(matchId);
+    await appFacade.toggleStatusMatch().execute(matchId);
     await getMatches();
   };
 
@@ -69,7 +58,7 @@ const MatchesPage: React.FC<Props> = ({
   return (
     <PageContainer>
         <div className="mb-8">
-          <GameForm addHandler={createMatch} getMatches={getMatches} />
+          <GameForm getMatches={getMatches} />
         </div>
 
         <div className="border-b pb-1 border-gray-400 flex gap-5 justify-between items-end mb-8">

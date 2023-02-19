@@ -1,7 +1,7 @@
 import UserGateway from "@domain/gateway/userGateway";
 import { IUser } from "@domain/model/user";
 import { HttpClient } from "@infra/http/httpClient";
-import { baseUrl } from "API/baseUrl";
+import { baseUrl } from "../../API/baseUrl";
 
 export default class UserHttpGateway implements UserGateway {
   constructor(readonly httpClient: HttpClient) {}

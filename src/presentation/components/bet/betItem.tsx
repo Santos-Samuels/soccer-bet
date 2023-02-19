@@ -26,7 +26,7 @@ const BetItem: React.FC<{ bet: IBet, match: IMatch }> = ({ bet, match }) => {
         <div className="flex items-end my-4">
           <div className="flex flex-col items-center">
             <div className="w-12">
-              <img src={`/src/assets/${match.team1}.png`} alt={match.team1} />
+              <img src={`/public/assets/${match.team1}.png`} alt={match.team1} />
             </div>
             <p className="mt-1">{match.team1}</p>
           </div>
@@ -39,7 +39,7 @@ const BetItem: React.FC<{ bet: IBet, match: IMatch }> = ({ bet, match }) => {
 
           <div className="flex flex-col items-center">
             <div className="w-12">
-              <img src={`/src/assets/${match.team2}.png`} alt={match.team2} />
+              <img src={`/public/assets/${match.team2}.png`} alt={match.team2} />
             </div>
             <p className="mt-1">{match.team2}</p>
           </div>

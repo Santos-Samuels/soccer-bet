@@ -32,7 +32,7 @@ const MatchItem: React.FC<Props> = ({ match, toggleStatus }) => {
         <div className="flex justify-center items-center  bg-neutral-600 p-2 rounded-md">
           <div className="flex flex-col justify-center items-center">
             <div className="w-6">
-              <img src={`/src/assets/${match.team1}.png`} alt={match.team1} />
+              <img src={`/public/assets/${match.team1}.png`} alt={match.team1} />
             </div>
             <p className="ml-1 text-center">{match.team1}</p>
           </div>
@@ -41,7 +41,7 @@ const MatchItem: React.FC<Props> = ({ match, toggleStatus }) => {
 
           <div className="flex flex-col justify-center items-center">
             <div className="w-6">
-              <img src={`/src/assets/${match.team2}.png`} alt={match.team2} />
+              <img src={`/public/assets/${match.team2}.png`} alt={match.team2} />
             </div>
             <p className="ml-1 text-center">{match.team2}</p>
           </div>

@@ -1,17 +1,13 @@
 import { IBet } from "@domain/model/bet";
 import { IMatch } from "@domain/model/match";
-import IListBets from "@domain/usecases/bet/listBets";
-import IGetMatch from "@domain/usecases/match/getMatch";
+import AppFacade from "@infra/facade";
 import { BetList, PageContainer } from "@presentation/components";
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
-type Props = {
-  listBets: IListBets;
-  getMatch: IGetMatch;
-};
+const appFacade = new AppFacade();
 
-const MyBetsPage: React.FC<Props> = ({ listBets, getMatch }) => {
+const MyBetsPage: React.FC = () => {
   const [bets, setBets] = useState<IBet[]>([]);
   const [matches, setMatches] = useState<IMatch[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -19,17 +15,17 @@ const MyBetsPage: React.FC<Props> = ({ listBets, getMatch }) => {
   const getData = async () => {
     setIsLoading(true);
     try {
-      const matchesItems: IMatch[] = []
-      const betsResponse = await listBets.execute();
+      const matchesItems: IMatch[] = [];
+      const betsResponse = await appFacade.listBets().execute();
 
       for (let i = 0; i < betsResponse.length; i++) {
         const item = betsResponse[i];
-        const matchResponse = await getMatch.execute(item.matchId);
-        matchesItems.push(matchResponse)
+        const matchResponse = await appFacade.getMatch().execute(item.matchId);
+        matchesItems.push(matchResponse);
       }
-      
+
       setBets(betsResponse);
-      setMatches(matchesItems)
+      setMatches(matchesItems);
     } catch (error) {
       setBets([]);
     }
@@ -49,12 +45,12 @@ const MyBetsPage: React.FC<Props> = ({ listBets, getMatch }) => {
       </div>
 
       {!isLoading && bets.length > 0 ? (
-          <BetList bets={bets} matches={matches} />
-        ) : (
-          <div className="mt-24 text-center">
-            <BeatLoader color="#eab308" size={30} />
-          </div>
-        )}
+        <BetList bets={bets} matches={matches} />
+      ) : (
+        <div className="mt-24 text-center">
+          <BeatLoader color="#eab308" size={30} />
+        </div>
+      )}
     </PageContainer>
   );
 };
