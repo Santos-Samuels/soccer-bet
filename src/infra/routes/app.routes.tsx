@@ -5,6 +5,7 @@ import {
   AccountPage,
   AddResultPage,
   LoginPage,
+  MatchesPage,
   MyBetsPage,
   NotFoundPage,
   RegisterPage,
@@ -12,7 +13,6 @@ import {
   ToBetPage,
   UnauthorizedPage,
 } from "@presentation/pages";
-import { MatchesPageFactory, MyBetsPageFactory } from "../factories/pages";
 
 const AppRoutes: React.FC = () => {
   return (
@@ -23,9 +23,9 @@ const AppRoutes: React.FC = () => {
 
         <Route element={<PrivateUserRoute />}>
           <Route path="/" element={<h1>HOMEPAGE</h1>} />
-          <Route path="/matches" element={<MatchesPageFactory />} />
+          <Route path="/matches" element={<MatchesPage />} />
           <Route path="/results" element={<ResultsPage />} />
-          <Route path="/my-bets" element={<MyBetsPageFactory />} />
+          <Route path="/my-bets" element={<MyBetsPage />} />
           <Route path="/to-bet" element={<ToBetPage />} />
           <Route path="/account" element={<AccountPage />} />
 
