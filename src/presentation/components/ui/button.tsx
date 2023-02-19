@@ -8,6 +8,7 @@ interface IProps extends React.ComponentPropsWithoutRef<"button"> {
   text: string;
   model?: "default" | "sm";
   isLoading?: boolean;
+  bold?: boolean
 }
 
 const Button: React.FC<IProps> = ({
@@ -17,6 +18,7 @@ const Button: React.FC<IProps> = ({
   type,
   text,
   model,
+  bold,
   isLoading,
   ...rest
 }) => {
@@ -27,7 +29,7 @@ const Button: React.FC<IProps> = ({
         id={id}
         type={type}
         disabled={isLoading}
-        className={`bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-600 transition ease-in-out delay-100 rounded-lg ${model === "sm" ? "py-0.5 px-2" : "py-2 px-4"}`}
+        className={`bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-600 transition ease-in-out delay-100 rounded-lg ${model === "sm" ? "py-0.5 px-2" : "py-2 px-4"} ${bold && "font-bold"}`}
       >{isLoading ? <BeatLoader color="#fff" size={model === "sm" ? 10 : undefined} /> : text}</button>
     </div>
   );

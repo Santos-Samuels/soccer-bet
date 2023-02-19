@@ -30,7 +30,7 @@ const Input: React.FC<IProps> = ({
         {...formRegister}
         id={id}
         type={type}
-        className={`bg-neutral-600 px-2 py-1 rounded-lg ${
+        className={`bg-neutral-600 px-3 py-1 rounded-lg ${
           errorMessage ? "border border-red-100" : ""
         }`}
       />

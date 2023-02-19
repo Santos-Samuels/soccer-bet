@@ -14,6 +14,8 @@ export class CreateUserUseCase implements ICreateUser {
 
   async execute(input: IInputUser): Promise<IUser> {
     const requestStatus = new RequestStatus();
+    delete input.confirmPassword
+
     const user: IUser = {
       ...input,
       id: uuidv4(),
