@@ -1,14 +1,15 @@
+import { AppContext } from "@presentation/context";
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateAdminRoute: React.FC = () => {
-  const TOKEN = localStorage.getItem("TOKEN");
-  const USER_TYPE = localStorage.getItem("USER_TYPE");
+  const token = localStorage.getItem("token");
+  const { user } = useContext(AppContext)
 
-  if (TOKEN === "undefined" || USER_TYPE === "undefined")
+  if (!token)
     return <Navigate replace to="/login" />;
 
-  if (USER_TYPE !== "ADMIN")
-    return <Navigate replace to="/unauthorized" />;
+  if (!user?.isAdmin) return <Navigate replace to="/unauthorized" />;
 
   return <Outlet />;
 };
