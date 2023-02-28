@@ -20,7 +20,7 @@ const MatchesPage: React.FC = () => {
       )}
 
       <div className="border-b pb-1 border-gray-400 flex gap-5 justify-between items-end mb-8">
-        <h1 className="text-xl md:text-3xl text-gray-400 font-bold">
+        <h1 className="text-xl md:text-3xl font-bold">
           Partidas Configuradas
         </h1>
       </div>
