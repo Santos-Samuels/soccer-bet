@@ -4,6 +4,7 @@ export interface IInputResult {
 }
 
 export interface IInputResultForm {
+  matchId: string;
   hint1: number;
   hint2: number;
 }

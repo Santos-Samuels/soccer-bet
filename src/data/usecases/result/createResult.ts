@@ -5,7 +5,7 @@ import ResultHttpGateway from "@gateway/resultHttpGateway";
 import { IInputResult } from "@data/dto/input/result";
 import { IResult } from "@domain/model/result";
 
-export class CreateBetsUseCase implements ICreateResult {
+export class CreateResultUseCase implements ICreateResult {
   private resultGateway: ResultHttpGateway;
 
   constructor(_resultGateway: ResultHttpGateway) {

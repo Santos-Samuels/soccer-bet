@@ -2,7 +2,7 @@ import { AppContext } from "@presentation/context";
 import { useContext } from "react";
 import MatchItem from "./MatchItem";
 
-const MetchList: React.FC = () => {
+const MatchList: React.FC = () => {
   const { matches, user } = useContext(AppContext);
 
   if (matches.length === 0) {
@@ -32,4 +32,4 @@ const MetchList: React.FC = () => {
   );
 };
 
-export default MetchList;
+export default MatchList;

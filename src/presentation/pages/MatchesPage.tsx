@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 import { MatchList, PageContainer } from "../components";
-import GameForm from "../components/match/MatchForm";
+import MatchForm from "../components/match/MatchForm";
 import { AppContext } from "@presentation/context";
 
 const MatchesPage: React.FC = () => {
@@ -15,7 +15,7 @@ const MatchesPage: React.FC = () => {
     <PageContainer>
       {user?.isAdmin && (
         <div className="mb-8">
-          <GameForm />
+          <MatchForm />
         </div>
       )}
 
@@ -25,7 +25,7 @@ const MatchesPage: React.FC = () => {
         </h1>
       </div>
 
-      {!isLoading && matches.length > 0 ? (
+      {!isLoading ? (
         <MatchList />
       ) : (
         <div className="mt-24 text-center">

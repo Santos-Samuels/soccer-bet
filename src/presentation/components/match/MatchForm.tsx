@@ -53,7 +53,7 @@ const groups = [
 
 const { createMatch } = new AppFacade();
 
-const GameForm: React.FC = () => {
+const MatchForm: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -135,4 +135,4 @@ const GameForm: React.FC = () => {
   );
 };
 
-export default GameForm;
+export default MatchForm;

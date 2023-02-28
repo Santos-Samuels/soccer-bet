@@ -1,5 +1,6 @@
 import { IBet } from "@domain/model/bet";
 import { IMatch } from "@domain/model/match";
+import { IResult } from "@domain/model/result";
 import { IUser } from "@domain/model/user";
 import AppFacade from "@infra/facade";
 import React, { Dispatch, PropsWithChildren, useEffect, useState } from "react";
@@ -8,22 +9,25 @@ interface IAppContext {
   user?: IUser;
   matches: IMatch[];
   bets: IBet[];
+  results: IResult[];
   currentMatch?: IMatch;
   isLoading: boolean;
   getMatches: (activeLoad?: boolean) => Promise<void>;
   getBets: () => Promise<void>;
+  getResults: () => Promise<void>;
   setUser: Dispatch<React.SetStateAction<IUser | undefined>>;
   setCurrentMatch: Dispatch<React.SetStateAction<IMatch | undefined>>;
 }
 
 export const AppContext = React.createContext({} as IAppContext);
-const { listMatches, listBets, getUser } = new AppFacade();
+const { listMatches, listBets, getUser, listResults } = new AppFacade();
 
 export const AppProvider: React.FC<PropsWithChildren> = (props) => {
   const [user, setUser] = useState<IUser>();
   const [matches, setMatches] = useState<IMatch[]>([]);
   const [currentMatch, setCurrentMatch] = useState<IMatch>();
   const [bets, setBets] = useState<IBet[]>([]);
+  const [results, setResults] = useState<IResult[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getMatches = async (activeLoad = true) => {
@@ -46,6 +50,19 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
       setBets([]);
     }
     setIsLoading(false);
+  };
+
+  const getResults = async () => {
+    setIsLoading(true)
+    try {
+      const resultResponse = await listResults().execute();
+      const MatchResponse = await listMatches().execute();
+      setResults(resultResponse);
+      setMatches(MatchResponse);
+    } catch (error) {
+      setResults([]);
+    }
+    setIsLoading(false)
   };
 
   const getUserData = async () => {
@@ -74,10 +91,12 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
         user,
         matches,
         bets,
+        results,
         currentMatch,
         isLoading,
         getMatches,
         getBets,
+        getResults,
         setUser,
         setCurrentMatch,
       }}

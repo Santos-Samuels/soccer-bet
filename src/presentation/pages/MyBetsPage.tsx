@@ -1,14 +1,9 @@
-import { IBet } from "@domain/model/bet";
-import { IMatch } from "@domain/model/match";
-import AppFacade from "@infra/facade";
 import { BetList, Button, PageContainer } from "@presentation/components";
 import BetForm from "@presentation/components/bet/BetForm";
 import { AppContext } from "@presentation/context";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
-
-const appFacade = new AppFacade();
 
 const MyBetsPage: React.FC = () => {
   const { currentMatch, getBets, isLoading, matches, bets } = useContext(AppContext);
@@ -35,7 +30,7 @@ const MyBetsPage: React.FC = () => {
         </Link>}
       </div>
 
-      {!isLoading && bets.length > 0 ? (
+      {!isLoading ? (
         <BetList bets={bets} matches={matches} />
       ) : (
         <div className="mt-24 text-center">
