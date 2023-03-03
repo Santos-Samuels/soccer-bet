@@ -45,6 +45,18 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     setIsLoading(true);
     try {
       const betsResponse = await listBets().execute();
+      const matchesResponse = await listMatches().execute();
+
+      const filteredMatches: IMatch[] = []
+
+      betsResponse.forEach(bet => {
+        const match = matchesResponse.find(match => match.id === bet.matchId)
+        if (match) {
+          filteredMatches.push(match)
+        }
+      })
+
+      setMatches(filteredMatches)
       setBets(betsResponse);
     } catch (error) {
       setBets([]);

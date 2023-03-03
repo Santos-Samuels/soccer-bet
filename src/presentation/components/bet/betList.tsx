@@ -1,13 +1,11 @@
 import { IBet } from "@domain/model/bet";
 import { IMatch } from "@domain/model/match";
+import { AppContext } from "@presentation/context";
+import { useContext } from "react";
 import BetItem from "./BetItem";
 
-type Props = {
-  bets: IBet[];
-  matches: IMatch[];
-};
-
-const BetList: React.FC<Props> = ({ bets, matches }) => {
+const BetList: React.FC = () => {
+  const { bets, matches } = useContext(AppContext)
   if (bets.length === 0) {
     return (
       <h3 className="text-2xl mt-24 text-center">Nenhuma aposta encontrada!</h3>
