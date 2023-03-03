@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 
 const MyBetsPage: React.FC = () => {
-  const { currentMatch, getBets, isLoading, matches, bets } = useContext(AppContext);
+  const { currentMatch, getBets, isLoading } = useContext(AppContext);
 
   useEffect(() => {
     getBets();
@@ -31,7 +31,7 @@ const MyBetsPage: React.FC = () => {
       </div>
 
       {!isLoading ? (
-        <BetList bets={bets} matches={matches} />
+        <BetList />
       ) : (
         <div className="mt-24 text-center">
           <BeatLoader color="#eab308" size={30} />
