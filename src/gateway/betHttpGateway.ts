@@ -6,6 +6,12 @@ import { baseUrl } from "../../API/baseUrl";
 export default class BetHttpGateway implements BetGateway {
   constructor(readonly httpClient: HttpClient) {}
 
+  async listUserBets(userId: string, matchId?: string): Promise<IBet[]> {
+    return await this.httpClient.get<IBet[]>(
+      `${baseUrl}/bets?userId=${userId}${matchId ? `&matchId=${matchId}` : ""}`
+    );
+  }
+
   async createBet(bet: IBet): Promise<void> {
     await this.httpClient.post(`${baseUrl}/bets`, bet);
     return;

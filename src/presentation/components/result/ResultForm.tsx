@@ -1,7 +1,6 @@
 import { Button, Input, Select } from "..";
 import { useForm } from "react-hook-form";
-import { IInputMatch } from "@data/dto/input/match";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import AppFacade from "@infra/facade";
 import { AppContext } from "@presentation/context";
 import { IInputResultForm } from "@data/dto/input/result";
@@ -10,42 +9,7 @@ import { ISelectOption } from "@presentation/types/selectOption";
 import { format } from "date-fns";
 import ErrorMessage from "../ui/ErrorMessage";
 
-const teams = [
-  "Catar",
-  "Equador",
-  "Holanda",
-  "Senegal",
-  "Estados Unidos",
-  "Inglaterra",
-  "Irã",
-  "País de Gales",
-  "Argentina",
-  "Arábia Saudita",
-  "México",
-  "Polônia",
-  "França",
-  "Dinamarca",
-  "Tunísia",
-  "Austrália",
-  "Espanha",
-  "Alemanha",
-  "Japão",
-  "Costa Rica",
-  "Bélgica",
-  "Canadá",
-  "Marrocos",
-  "Croácia",
-  "Brasil",
-  "Sérvia",
-  "Suíça",
-  "Camarões",
-  "Portugal",
-  "Gana",
-  "Uruguai",
-  "Coreia do Sul",
-];
-
-const { createResult } = new AppFacade();
+const { createResult, updateUsersScore } = new AppFacade();
 
 const ResultForm: React.FC = () => {
   const {
@@ -53,22 +17,28 @@ const ResultForm: React.FC = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<IInputResultForm>();
-  // defaultValues: { matchId: "" }
+  } = useForm<IInputResultForm>({ defaultValues: { matchId: "" } });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { matches, results, getResults } = useContext(AppContext);
-  const [selectOptions, setSelectOptions] = useState<
-    string[] | ISelectOption[]
-  >([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data: IInputResultForm) => {
-    console.log(data);
-
     setIsLoading(true);
-    await createResult().execute({ hint: [data.hint1, data.hint2], matchId: data.matchId });
-    reset();
+    try {
+      const createdResult = await createResult().execute({
+        hint: [data.hint1, data.hint2],
+        matchId: data.matchId,
+      });
+      
+      await updateUsersScore().execute(createdResult);
+
+      reset();
+      await getResults();
+      
+    } catch (error) {
+      setErrorMessage("Erro no servidor.");
+    }
     setIsLoading(false);
-    await getResults();
   };
 
   const formatSelectItems = () => {
@@ -88,16 +58,13 @@ const ResultForm: React.FC = () => {
     });
 
     if (selectItems.length > 0) {
-      setSelectOptions(selectItems);
-      return;
+      return selectItems;
     }
 
-    setSelectOptions([]);
+    return [];
   };
 
-  useEffect(() => {
-    formatSelectItems();
-  }, []);
+  const selectOptions = formatSelectItems();
 
   return (
     <form
@@ -109,15 +76,23 @@ const ResultForm: React.FC = () => {
       </h1>
 
       {selectOptions.length > 0 ? (
-        <div className="mt-5 flex flex-col md:flex-row gap-5">
-          <Select
-            formRegister={register("matchId", {
-              required: "Selecione uma Partida",
-            })}
-            label="Partida"
-            options={selectOptions}
-            errorMessage={errors.matchId?.message}
-          />
+        <div className="mt-5 flex justify-center flex-col md:flex-row gap-5">
+          <div>
+            <Select
+              formRegister={register("matchId", {
+                required: "Selecione uma Partida",
+              })}
+              label="Partida"
+              options={selectOptions}
+              errorMessage={errors.matchId?.message}
+            />
+
+            {errorMessage && (
+              <div className="mt-1">
+                <ErrorMessage message={errorMessage} />
+              </div>
+            )}
+          </div>
 
           <div className="flex flex-col">
             <p>Placar</p>
@@ -128,6 +103,7 @@ const ResultForm: React.FC = () => {
                 type="number"
                 min="0"
                 max="10"
+                className="h-10"
               />
 
               <span className="text-center font-bold text-2xl grid">x</span>
@@ -137,6 +113,7 @@ const ResultForm: React.FC = () => {
                 type="number"
                 min="0"
                 max="10"
+                className="h-10"
               />
             </div>
             {(errors.hint1 || errors.hint2) && (
