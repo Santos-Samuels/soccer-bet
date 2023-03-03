@@ -27,7 +27,7 @@ export class UpdateUsersScoreUseCase implements UpdateUsersScore {
 
         userBets.forEach((bet) => {
           if (bet.hint.toString() === result.hint.toString()) {
-            user.score += 3;
+            user.score += 1;
           }
         });
 
