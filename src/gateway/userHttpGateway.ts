@@ -5,6 +5,10 @@ import { baseUrl } from "../../API/baseUrl";
 
 export default class UserHttpGateway implements UserGateway {
   constructor(readonly httpClient: HttpClient) {}
+  
+  async updateUser(user: IUser): Promise<void> {
+    await this.httpClient.put(`${baseUrl}/users/${user.id}`, user);
+  }
 
   async loginUser(userEmail: string): Promise<IUser> {
     const users = await this.httpClient.get<IUser[]>(`${baseUrl}/users?email=${userEmail}`)

@@ -19,7 +19,8 @@ export class CreateUserUseCase implements ICreateUser {
     const user: IUser = {
       ...input,
       id: uuidv4(),
-      isAdmin: false
+      isAdmin: false,
+      score: 0,
     };
 
     try {
