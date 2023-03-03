@@ -5,4 +5,5 @@ export default interface UserGateway {
   getUser(userId: string): Promise<IUser>;
   listUsers(): Promise<IUser[]>;
   loginUser(userEmail: string): Promise<IUser>;
+  updateUser(user: IUser): Promise<void>;
 }

@@ -5,4 +5,5 @@ export default interface BetGateway {
   createBet(bet: IBet): Promise<void>;
   getBet(betId: string): Promise<IBet>;
   listBets(): Promise<IBet[]>;
+  listUserBets(userId: string, matchId?: string): Promise<IBet[]>;
 }

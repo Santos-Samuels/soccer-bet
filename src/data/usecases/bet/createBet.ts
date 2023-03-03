@@ -5,7 +5,7 @@ import RequestStatus from "@domain/requestStatus/requestStatus";
 import ICreateBet from "@domain/usecases/bet/createBet";
 import BetHttpGateway from "@gateway/betHttpGateway";
 
-export class CreateBetsUseCase implements ICreateBet {
+export class CreateBetUseCase implements ICreateBet {
   private betGateway: BetHttpGateway;
 
   constructor(_betGateway: BetHttpGateway) {
