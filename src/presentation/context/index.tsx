@@ -50,17 +50,20 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     try {
       const betsResponse = await listBets().execute();
       const matchesResponse = await listMatches().execute();
+      const resultsResponse = await listResults().execute();
 
       const filteredMatches: IMatch[] = [];
 
       betsResponse.forEach((bet) => {
         const match = matchesResponse.find((match) => match.id === bet.matchId);
+
         if (match) {
           filteredMatches.push(match);
         }
       });
 
       setMatches(filteredMatches);
+      setResults(resultsResponse);
       setBets(betsResponse);
     } catch (error) {
       setBets([]);
@@ -142,7 +145,7 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
         getResults,
         setCurrentUser,
         setCurrentMatch,
-        getUsers
+        getUsers,
       }}
     >
       {props.children}

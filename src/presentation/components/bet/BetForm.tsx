@@ -54,7 +54,7 @@ const BetForm: React.FC = () => {
     formState: { errors },
   } = useForm<IInputBetForm>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { currentMatch, user, setCurrentMatch, getBets } =
+  const { currentMatch, currentUser, setCurrentMatch, getBets } =
     useContext(AppContext);
 
   const onSubmit = async (data: IInputBetForm) => {
@@ -62,7 +62,7 @@ const BetForm: React.FC = () => {
     const newBet: IInputBet = {
       matchId: currentMatch!.id,
       hint: [data.hint1, data.hint2],
-      userId: user!.id,
+      userId: currentUser!.id,
     };
 
     await createBet().execute(newBet);
