@@ -35,7 +35,7 @@ const Button: React.FC<IProps> = ({
           id={id}
           type={type}
           disabled={isLoading}
-          className={`bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-600 transition ease-in-out delay-100 rounded-lg ${
+          className={`bg-yellow-600 hover:bg-yellow-700 disabled:bg-yellow-700 transition ease-in-out delay-100 rounded-lg ${
             model === "sm" ? "py-0.5 px-2" : "py-2 px-4"
           } ${bold && model !== "sm" && "font-bold"}`}
         >

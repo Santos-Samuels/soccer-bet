@@ -12,8 +12,8 @@ const HomePage: React.FC = () => {
 
   return (
     <PageContainer>
-      <section>
-        <div className="flex flex-col items-center justify-center">
+      <div className="border-4 border-dashed border-neutral-600 rounded-lg">
+        <div className="px-4 py-6 sm:px-0">
           <h1 className="text-3xl md:text-5xl font-bold text-center">
             Bem vindo ao Bolão da Copa!
           </h1>
@@ -21,9 +21,9 @@ const HomePage: React.FC = () => {
             Faça sua aposta e acompanhe os resultados!
           </p>
         </div>
-      </section>
+      </div>
 
-      <section className="mt-10">
+      <section className="mt-12">
         <div className="border-b pb-1 border-gray-400 flex gap-5 justify-between items-end mb-8">
           <h1 className="text-xl md:text-3xl font-bold">Ranking de Pontos</h1>
         </div>
