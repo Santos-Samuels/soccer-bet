@@ -41,6 +41,7 @@ const Navbar: React.FC = () => {
                     ? "bg-yellow-700/75 text-white"
                     : "text-gray-300 hover:bg-yellow-900/50 hover:text-white"
                 }`}
+                key={route.name}
                 onClick={() => navigate(route.path)}
               >
                 {route.name}
