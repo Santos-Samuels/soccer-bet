@@ -1,5 +1,3 @@
-import { IBet } from "@domain/model/bet";
-import { IMatch } from "@domain/model/match";
 import { AppContext } from "@presentation/context";
 import { useContext } from "react";
 import BetItem from "./BetItem";

@@ -76,7 +76,7 @@ const ResultForm: React.FC = () => {
       </h1>
 
       {selectOptions.length > 0 ? (
-        <div className="mt-5 flex justify-center flex-col md:flex-row gap-5">
+        <div className="mt-5 flex justify-center flex-wrap flex-col md:flex-row gap-5">
           <div>
             <Select
               formRegister={register("matchId", {

@@ -16,7 +16,7 @@ const { toggleStatusMatch, createBet } = new AppFacade();
 const MatchItem: React.FC<Props> = ({ match }) => {
   const date = new Date(match.date);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { getMatches, user, setCurrentMatch } = useContext(AppContext);
+  const { getMatches, currentUser, setCurrentMatch } = useContext(AppContext);
   const navigate = useNavigate()
 
   const toggleStatusHandler = async () => {
@@ -66,8 +66,8 @@ const MatchItem: React.FC<Props> = ({ match }) => {
           </div>
         </div>
 
-        <div className={`mt-2 flex ${user?.isAdmin ? "justify-between" : "justify-end"} items-center`}>
-          {user?.isAdmin && <p
+        <div className={`mt-2 flex ${currentUser?.isAdmin ? "justify-between" : "justify-end"} items-center`}>
+          {currentUser?.isAdmin && <p
             className={`${
               match.isActive ? "bg-green-700" : "bg-yellow-800"
             } px-1 rounded-md`}
@@ -76,7 +76,7 @@ const MatchItem: React.FC<Props> = ({ match }) => {
           </p>}
 
           <div className="flex items-center gap-3">
-            {user?.isAdmin && <Button
+            {currentUser?.isAdmin && <Button
               type="button"
               model="sm"
               isLoading={isLoading}
@@ -85,13 +85,13 @@ const MatchItem: React.FC<Props> = ({ match }) => {
               {match.isActive ? <FaEye /> : <FaEyeSlash />}
             </Button>}
 
-            <Button
+            {match.isActive && <Button
               type="button"
               text="Apostar"
               className="justify-self-end"
               model="sm"
               onClick={makeBet}
-            />
+            />}
           </div>
         </div>
       </section>

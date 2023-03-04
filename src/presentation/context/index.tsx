@@ -6,7 +6,8 @@ import AppFacade from "@infra/facade";
 import React, { Dispatch, PropsWithChildren, useEffect, useState } from "react";
 
 interface IAppContext {
-  user?: IUser;
+  currentUser?: IUser;
+  users: IUser[];
   matches: IMatch[];
   bets: IBet[];
   results: IResult[];
@@ -15,15 +16,18 @@ interface IAppContext {
   getMatches: (activeLoad?: boolean) => Promise<void>;
   getBets: () => Promise<void>;
   getResults: () => Promise<void>;
-  setUser: Dispatch<React.SetStateAction<IUser | undefined>>;
+  setCurrentUser: Dispatch<React.SetStateAction<IUser | undefined>>;
   setCurrentMatch: Dispatch<React.SetStateAction<IMatch | undefined>>;
+  getUsers: () => Promise<void>;
 }
 
 export const AppContext = React.createContext({} as IAppContext);
-const { listMatches, listBets, getUser, listResults } = new AppFacade();
+const { listMatches, listBets, getUser, listResults, listUsers } =
+  new AppFacade();
 
 export const AppProvider: React.FC<PropsWithChildren> = (props) => {
-  const [user, setUser] = useState<IUser>();
+  const [currentUser, setCurrentUser] = useState<IUser>();
+  const [users, setUsers] = useState<IUser[]>([]);
   const [matches, setMatches] = useState<IMatch[]>([]);
   const [currentMatch, setCurrentMatch] = useState<IMatch>();
   const [bets, setBets] = useState<IBet[]>([]);
@@ -31,14 +35,14 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getMatches = async (activeLoad = true) => {
-    setIsLoading(activeLoad)
+    setIsLoading(activeLoad);
     try {
       const response = await listMatches().execute();
       setMatches(response);
     } catch (error) {
       setMatches([]);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   const getBets = async () => {
@@ -47,16 +51,16 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
       const betsResponse = await listBets().execute();
       const matchesResponse = await listMatches().execute();
 
-      const filteredMatches: IMatch[] = []
+      const filteredMatches: IMatch[] = [];
 
-      betsResponse.forEach(bet => {
-        const match = matchesResponse.find(match => match.id === bet.matchId)
+      betsResponse.forEach((bet) => {
+        const match = matchesResponse.find((match) => match.id === bet.matchId);
         if (match) {
-          filteredMatches.push(match)
+          filteredMatches.push(match);
         }
-      })
+      });
 
-      setMatches(filteredMatches)
+      setMatches(filteredMatches);
       setBets(betsResponse);
     } catch (error) {
       setBets([]);
@@ -65,7 +69,7 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
   };
 
   const getResults = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       const resultResponse = await listResults().execute();
       const MatchResponse = await listMatches().execute();
@@ -74,7 +78,7 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     } catch (error) {
       setResults([]);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   const getUserData = async () => {
@@ -83,34 +87,62 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     try {
       if (id) {
         const userData = await getUser().execute(id!);
-        setUser(userData);
+        setCurrentUser(userData);
         return;
       }
     } catch (error) {}
 
-    setUser(undefined);
+    setCurrentUser(undefined);
+  };
+
+  const getUsers = async () => {
+    setIsLoading(true);
+    try {
+      const response = await listUsers().execute();
+
+      response.sort((a, b) => {
+        if (a.score > b.score) {
+          return -1;
+        }
+        if (a.score < b.score) {
+          return 1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
+      });
+
+      setUsers(response);
+    } catch (error) {
+      setUsers([]);
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    getUserData()
-  }, [])
-  console.log(user);
-  
+    getUserData();
+  }, []);
 
   return (
     <AppContext.Provider
       value={{
-        user,
+        currentUser,
         matches,
         bets,
         results,
         currentMatch,
         isLoading,
+        users,
         getMatches,
         getBets,
         getResults,
-        setUser,
+        setCurrentUser,
         setCurrentMatch,
+        getUsers
       }}
     >
       {props.children}

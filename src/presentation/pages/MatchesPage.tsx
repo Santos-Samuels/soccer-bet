@@ -5,7 +5,7 @@ import MatchForm from "../components/match/MatchForm";
 import { AppContext } from "@presentation/context";
 
 const MatchesPage: React.FC = () => {
-  const { matches, getMatches, user, isLoading } = useContext(AppContext);
+  const { matches, getMatches, currentUser, isLoading } = useContext(AppContext);
 
   useEffect(() => {
     getMatches();
@@ -13,7 +13,7 @@ const MatchesPage: React.FC = () => {
 
   return (
     <PageContainer>
-      {user?.isAdmin && (
+      {currentUser?.isAdmin && (
         <div className="mb-8">
           <MatchForm />
         </div>

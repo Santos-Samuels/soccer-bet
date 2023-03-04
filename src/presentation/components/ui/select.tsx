@@ -35,7 +35,7 @@ const Select: React.FC<IProps> = ({
         {...rest}
         {...formRegister}
         id={id}
-        className={`bg-neutral-600 p-2 rounded-lg ${
+        className={`bg-neutral-600 p-2 rounded-lg w-full ${
           errorMessage ? "border border-red-100" : ""
         }`}
       >

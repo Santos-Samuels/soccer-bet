@@ -9,6 +9,8 @@ import ResultList from "./result/ResultList";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Select from "./ui/Select";
+import UserItem from "./user/UserItem";
+import UserList from "./user/UserList";
 
 export {
   BetItem,
@@ -21,5 +23,7 @@ export {
   PageContainer,
   ResultList,
   ResultItem,
-  ResultForm
+  ResultForm,
+  UserList,
+  UserItem,
 }

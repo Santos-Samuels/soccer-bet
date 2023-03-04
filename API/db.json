@@ -1,18 +1,42 @@
 {
   "users": [
     {
-      "name": "Samuel Santos",
+      "name": "Teste Taster",
       "email": "teste@teste.com",
       "password": "123",
       "id": "1199b6e2-37cc-468a-8c3b-7c980b89723f",
       "isAdmin": false,
-      "score": 3
+      "score": 4
     },
     {
       "name": "Samuel Santos",
       "email": "admin@teste.com",
       "password": "123",
-      "id": "1199b6e2-37cc-468a-8c3b-7c980b33723f",
+      "id": "1199b6e2-37cc-468a-5c5b-7c980b33723f",
+      "isAdmin": true,
+      "score": 11
+    },
+    {
+      "name": "Anonimo User",
+      "email": "admin@teste.com",
+      "password": "123",
+      "id": "1199b6e2-37cc-468a-4g6e-7c980b33723f",
+      "isAdmin": true,
+      "score": 10
+    },
+    {
+      "name": "Amanda Silva",
+      "email": "admin@teste.com",
+      "password": "123",
+      "id": "1199b6e2-37cc-468a-44as-7c980b33723f",
+      "isAdmin": true,
+      "score": 0
+    },
+    {
+      "name": "Fulando de Tal",
+      "email": "admin@teste.com",
+      "password": "123",
+      "id": "1199b6e2-37cc-345a-8c3b-7c980b33723f",
       "isAdmin": true,
       "score": 0
     }
@@ -32,7 +56,7 @@
       "date": "2022-11-21",
       "team1": "Senegal",
       "team2": "Holanda",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "bd5702da-b68e-4d6c-907f-d2255820a3df",
@@ -401,6 +425,15 @@
       "team1": "Coréia do Sul",
       "team2": "Portugal",
       "isActive": false
+    },
+    {
+      "team1": "Dinamarca",
+      "team2": "Argentina",
+      "group": "Group C",
+      "date": "2023-02-03",
+      "time": "12:00",
+      "id": "a47ebbcd-6f1c-4436-9bd9-989e35c95c5d",
+      "isActive": true
     }
   ],
   "teams": [
@@ -494,6 +527,16 @@
       "userId": "1199b6e2-37cc-468a-8c3b-7c980b89723f",
       "id": "2eb9b66c-7e02-4144-aea6-0e46554d1ac0",
       "value": 5.3
+    },
+    {
+      "matchId": "271c6dfe-2aac-41ea-a888-a61f8d5139c5",
+      "hint": [
+        "1",
+        "1"
+      ],
+      "userId": "1199b6e2-37cc-468a-8c3b-7c980b33723f",
+      "id": "bbe5e2b9-03d2-4b51-bb29-23bd6a47c68d",
+      "value": 5.3
     }
   ],
   "results": [
@@ -503,7 +546,7 @@
         "2"
       ],
       "matchId": "bd5702da-b68e-4d6c-907f-d2255820a3df",
-      "id": "7f0e24ee-5e3b-4270-8508-8d1e30325e25"
+      "id": "783e4073-18fc-4b21-b632-8cb2031e70da"
     }
   ]
 }

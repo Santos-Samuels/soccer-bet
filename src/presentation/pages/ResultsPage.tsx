@@ -4,7 +4,7 @@ import { PageContainer, ResultForm, ResultList } from "../components";
 import { AppContext } from "@presentation/context";
 
 const ResultsPage: React.FC = () => {
-  const { getResults, user, isLoading } = useContext(AppContext);
+  const { getResults, currentUser, isLoading } = useContext(AppContext);
 
   useEffect(() => {
     getResults();
@@ -12,7 +12,7 @@ const ResultsPage: React.FC = () => {
 
   return (
     <PageContainer>
-      {user?.isAdmin && (
+      {currentUser?.isAdmin && (
         <div className="mb-8">
           <ResultForm />
         </div>
