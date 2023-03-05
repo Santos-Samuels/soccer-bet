@@ -2,14 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateUserRoute from "./user.routes";
 import PrivateAdminRoute from "./admin.routes";
 import {
-  AccountPage,
   LoginPage,
   MatchesPage,
   MyBetsPage,
   NotFoundPage,
   RegisterPage,
   ResultsPage,
-  ToBetPage,
   UnauthorizedPage,
   HomePage,
 } from "@presentation/pages";
@@ -26,8 +24,6 @@ const AppRoutes: React.FC = () => {
           <Route path="/matches" element={<MatchesPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/my-bets" element={<MyBetsPage />} />
-          <Route path="/to-bet" element={<ToBetPage />} />
-          <Route path="/account" element={<AccountPage />} />
 
           <Route element={<PrivateAdminRoute />}>
           </Route>
