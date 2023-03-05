@@ -21,7 +21,7 @@ export default class BetHttpGateway implements BetGateway {
     return await this.httpClient.get(`${baseUrl}/bets/${betId}`);
   }
 
-  async listBets(): Promise<IBet[]> {
-    return await this.httpClient.get(`${baseUrl}/bets`);
+  async listBets(userId?: string): Promise<IBet[]> {
+    return await this.httpClient.get(`${baseUrl}/bets${userId ? `?userId=${userId}` : ""}`);
   }
 }

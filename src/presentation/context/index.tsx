@@ -14,7 +14,7 @@ interface IAppContext {
   currentMatch?: IMatch;
   isLoading: boolean;
   getMatches: (activeLoad?: boolean) => Promise<void>;
-  getBets: () => Promise<void>;
+  getBets: (userId?: string) => Promise<void>;
   getResults: () => Promise<void>;
   setCurrentUser: Dispatch<React.SetStateAction<IUser | undefined>>;
   setCurrentMatch: Dispatch<React.SetStateAction<IMatch | undefined>>;
@@ -45,10 +45,10 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     setIsLoading(false);
   };
 
-  const getBets = async () => {
+  const getBets = async (userId?: string) => {
     setIsLoading(true);
     try {
-      const betsResponse = await listBets().execute();
+      const betsResponse = await listBets().execute(userId);
       const matchesResponse = await listMatches().execute();
       const resultsResponse = await listResults().execute();
 

@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 
 const MyBetsPage: React.FC = () => {
-  const { currentMatch, getBets, isLoading } = useContext(AppContext);
+  const { currentMatch, getBets, isLoading, currentUser } = useContext(AppContext);
 
   useEffect(() => {
-    getBets();
+    getBets(currentUser?.id);
   }, []);
 
   return (

@@ -10,11 +10,11 @@ export class ListBetsUseCase implements IListBets {
     this.betGateway = _betGateway;
   }
 
-  async execute(): Promise<IBet[]> {
+  async execute(userId?: string): Promise<IBet[]> {
     const requestStatus = new RequestStatus();
 
     try {
-      const bets = await this.betGateway.listBets();
+      const bets = await this.betGateway.listBets(userId);
       return bets;
     } catch (error) {
       throw requestStatus.serverError;
