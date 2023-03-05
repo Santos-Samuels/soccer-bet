@@ -9,8 +9,8 @@ const MyBetsPage: React.FC = () => {
   const { currentMatch, getBets, isLoading, currentUser } = useContext(AppContext);
 
   useEffect(() => {
-    getBets(currentUser?.id);
-  }, []);
+    currentUser && getBets(currentUser?.id);
+  }, [currentUser]);
 
   return (
     <PageContainer>
