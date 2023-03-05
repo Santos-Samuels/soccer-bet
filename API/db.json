@@ -39,6 +39,30 @@
       "id": "1199b6e2-37cc-345a-8c3b-7c980b33723f",
       "isAdmin": true,
       "score": 0
+    },
+    {
+      "name": "Joseph",
+      "email": "joseph@joestar.com",
+      "password": "abc",
+      "id": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "isAdmin": false,
+      "score": 0
+    },
+    {
+      "name": "Josuke",
+      "email": "josuke@joestar.com",
+      "password": "abc",
+      "id": "e6cd2a14-4287-47e4-8562-11070c874060",
+      "isAdmin": false,
+      "score": 0
+    },
+    {
+      "name": "Jotaro",
+      "email": "jotaro@joestar.com",
+      "password": "abc",
+      "id": "fca60d27-2219-4d97-8061-8350d06cb445",
+      "isAdmin": false,
+      "score": 0
     }
   ],
   "matches": [
@@ -536,6 +560,216 @@
       ],
       "userId": "1199b6e2-37cc-468a-8c3b-7c980b33723f",
       "id": "bbe5e2b9-03d2-4b51-bb29-23bd6a47c68d",
+      "value": 5.3
+    },
+    {
+      "matchId": "fb05ec05-e346-4a9b-a36f-bbc158d7c55a",
+      "hint": [
+        "1",
+        "1"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "d453a0d5-e766-472d-ae48-e4c980cf6184",
+      "value": 5.3
+    },
+    {
+      "matchId": "fdc19b59-db4e-4118-8292-c4d5b15a82b3",
+      "hint": [
+        "3",
+        "0"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "ddda8a4e-b682-40e5-938d-27cc42ef46e4",
+      "value": 5.3
+    },
+    {
+      "matchId": "4c03e1b0-188c-476b-8ff9-2988586d172a",
+      "hint": [
+        "2",
+        "1"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "1d8d77f9-1c33-4bdb-8ae5-a4d14c053803",
+      "value": 5.3
+    },
+    {
+      "matchId": "a0f94f98-d316-48ea-8da1-9221c28f4e68",
+      "hint": [
+        "2",
+        "3"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "64e03d62-b9d7-4bbb-a86e-c8993b972d3b",
+      "value": 5.3
+    },
+    {
+      "matchId": "73ed367d-4af3-49ee-9b6b-98f4dc2ceafb",
+      "hint": [
+        "0",
+        "0"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "ecda55d2-81b1-4453-97d4-e50afa8755e8",
+      "value": 5.3
+    },
+    {
+      "matchId": "6468dabd-1484-456a-942b-4fd0289677c0",
+      "hint": [
+        "2",
+        "1"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "946be7b7-29b5-4140-8d0c-3f409ae3da2a",
+      "value": 5.3
+    },
+    {
+      "matchId": "a0f94f98-d316-48ea-8da1-9221c28f4e68",
+      "hint": [
+        "1",
+        "1"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "8e08f86c-ae04-405b-b0a5-6ef2b60206ec",
+      "value": 5.3
+    },
+    {
+      "matchId": "dbcf05c5-f107-4caf-988b-091b2cffaac1",
+      "hint": [
+        "2",
+        "4"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "001964a2-3e53-46f8-a009-641679abe56f",
+      "value": 5.3
+    },
+    {
+      "matchId": "de527ccc-0738-4292-84ef-6ab89ca199d9",
+      "hint": [
+        "1",
+        "2"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "073f64e1-08f7-4e64-a8df-c1b6fc07634b",
+      "value": 5.3
+    },
+    {
+      "matchId": "fa21630f-f05e-4b3b-868d-dfbd468d4d73",
+      "hint": [
+        "2",
+        "4"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "ab319a04-0c84-4de2-91d1-54ff424530fd",
+      "value": 5.3
+    },
+    {
+      "matchId": "6468dabd-1484-456a-942b-4fd0289677c0",
+      "hint": [
+        "1",
+        "0"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "c5e2fde5-5ec2-431f-8912-dae01a859718",
+      "value": 5.3
+    },
+    {
+      "matchId": "c2e1ab19-e10a-4bb8-8c34-75a8fa95a6b7",
+      "hint": [
+        "3",
+        "2"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "96cdb600-8dbc-4fdb-92ae-6d9c4e52a375",
+      "value": 5.3
+    },
+    {
+      "matchId": "b40f4c62-e2da-40e6-adaf-12eecf4141cc",
+      "hint": [
+        "5",
+        "4"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "cc4a603e-ccd8-4682-b0a7-c886f65f8e7e",
+      "value": 5.3
+    },
+    {
+      "matchId": "30fd6617-3214-400c-b5c2-0ff378596207",
+      "hint": [
+        "5",
+        "2"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "b7436515-d1cc-406d-8845-6cbc2bf23cb9",
+      "value": 5.3
+    },
+    {
+      "matchId": "a0f94f98-d316-48ea-8da1-9221c28f4e68",
+      "hint": [
+        "0",
+        "0"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "8579fe61-4a76-47d5-bdbd-b7d9d70c99da",
+      "value": 5.3
+    },
+    {
+      "matchId": "fdc19b59-db4e-4118-8292-c4d5b15a82b3",
+      "hint": [
+        "5",
+        "0"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "221ddd11-af02-4c52-9dc7-7d2d13e38c7f",
+      "value": 5.3
+    },
+    {
+      "matchId": "4331f6f4-697e-47d0-a585-3f2b809ca2e7",
+      "hint": [
+        "1",
+        "1"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "c177184d-7696-4ee3-9e0a-9b5c810b9170",
+      "value": 5.3
+    },
+    {
+      "matchId": "a1ea8476-5387-4e5c-880d-c19dddc5cdd4",
+      "hint": [
+        "1",
+        "3"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "11478cd9-83ac-4966-866f-57ced5ac8a98",
+      "value": 5.3
+    },
+    {
+      "matchId": "3e478d61-c84f-4982-a884-662c8035ecc5",
+      "hint": [
+        "2",
+        "4"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "d9716eb5-cf66-49a4-8403-ac6e87d3eca3",
+      "value": 5.3
+    },
+    {
+      "matchId": "6468dabd-1484-456a-942b-4fd0289677c0",
+      "hint": [
+        "0",
+        "0"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "bbe43d5b-560e-4658-8c29-8680e03ac81a",
+      "value": 5.3
+    },
+    {
+      "matchId": "2bae0653-c56e-4840-9adf-ba016b01680d",
+      "hint": [
+        "1",
+        "2"
+      ],
+      "userId": "6ba9486a-276f-4f54-8bbe-f9d6080d2546",
+      "id": "62e73d6c-f378-4057-a55b-3aaa28899ee8",
       "value": 5.3
     }
   ],
