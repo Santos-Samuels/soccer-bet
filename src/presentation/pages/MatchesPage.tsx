@@ -5,7 +5,7 @@ import MatchForm from "../components/match/MatchForm";
 import { AppContext } from "@presentation/context";
 
 const MatchesPage: React.FC = () => {
-  const { matches, getMatches, currentUser, isLoading } = useContext(AppContext);
+  const { getMatches, currentUser, isLoading } = useContext(AppContext);
 
   useEffect(() => {
     getMatches();

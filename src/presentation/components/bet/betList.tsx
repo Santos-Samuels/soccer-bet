@@ -13,7 +13,7 @@ const BetList: React.FC = () => {
   return (
     <>
       <p>Total de itens: {bets.length}</p>
-      <div className="flex gap-3 flex-wrap justify-center">
+      <div className="flex gap-3 flex-wrap justify-center mt-5">
         {bets.map((bet, index) => (
           <BetItem bet={bet} key={bet.id} match={matches[index]} />
         ))}
