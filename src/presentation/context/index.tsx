@@ -77,19 +77,8 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     try {
       const resultResponse = await listResults().execute();
       const MatchResponse = await listMatches().execute();
-
-      const filteredMatches: IMatch[] = [];
-
-      resultResponse.forEach((result) => {
-        const match = MatchResponse.find((match) => match.id === result.matchId);
-
-        if (match) {
-          filteredMatches.push(match);
-        }
-      });
-
       setResults(resultResponse);
-      setMatches(filteredMatches);
+      setMatches(MatchResponse);
     } catch (error) {
       setResults([]);
     }
