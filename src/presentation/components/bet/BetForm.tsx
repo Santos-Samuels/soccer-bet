@@ -69,7 +69,7 @@ const BetForm: React.FC = () => {
     setCurrentMatch(undefined);
     reset();
     setIsLoading(false);
-    await getBets();
+    await getBets(currentUser?.id);
   };
 
   const formatToInputDate = () => {
