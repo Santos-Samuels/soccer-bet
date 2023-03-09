@@ -25,9 +25,9 @@ const UserItem: React.FC<IProps> = ({ user }) => {
         </div>
         <div className=" text-xl text-gray-700">
           <h2 className="text-gray-300 whitespace-nowrap">{user.name}</h2>
-          {currentUser?.isAdmin && (
+          {currentUser?.isAdmin ? (
             <p className="text-xs text-gray-300 font-normal">{user.email}</p>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

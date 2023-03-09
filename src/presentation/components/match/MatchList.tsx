@@ -3,7 +3,7 @@ import { useContext } from "react";
 import MatchItem from "./MatchItem";
 
 const MatchList: React.FC = () => {
-  const { matches, user } = useContext(AppContext);
+  const { matches, currentUser } = useContext(AppContext);
 
   if (matches.length === 0) {
     return (
@@ -17,13 +17,13 @@ const MatchList: React.FC = () => {
     <>
       <p>
         Total de itens:{" "}
-        {!user?.isAdmin
+        {!currentUser?.isAdmin
           ? matches.filter((item) => item.isActive).length
           : matches.length}
       </p>
       <div className="flex gap-3 flex-wrap mt-5 justify-center">
         {matches.map((match) => {
-          if (!match.isActive && !user?.isAdmin) return;
+          if (!match.isActive && !currentUser?.isAdmin) return;
 
           return <MatchItem match={match} key={match.id} />;
         })}

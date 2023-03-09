@@ -3,7 +3,7 @@ import { useContext } from "react";
 import UserItem from "./UserItem";
 
 const UserList: React.FC = () => {
-  const { users, isLoading } = useContext(AppContext);
+  const { users } = useContext(AppContext);
 
   if (users.length === 0) {
     return <h3 className="text-2xl mt-24 text-center">Não há ranking para listar!</h3>;
