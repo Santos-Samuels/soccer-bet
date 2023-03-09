@@ -79,6 +79,7 @@ const ResultForm: React.FC = () => {
         <div className="mt-5 flex justify-center flex-wrap flex-col md:flex-row gap-5">
           <div>
             <Select
+              id="matchId"
               formRegister={register("matchId", {
                 required: "Selecione uma Partida",
               })}
@@ -99,6 +100,7 @@ const ResultForm: React.FC = () => {
 
             <div className="flex gap-3 items-center">
               <Input
+                id="hint1"
                 formRegister={register("hint1", { required: true })}
                 type="number"
                 min="0"
@@ -109,6 +111,7 @@ const ResultForm: React.FC = () => {
               <span className="text-center font-bold text-2xl grid">x</span>
 
               <Input
+                id="hint2"
                 formRegister={register("hint2", { required: true })}
                 type="number"
                 min="0"

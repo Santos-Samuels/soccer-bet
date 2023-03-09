@@ -85,22 +85,25 @@ const MatchForm: React.FC = () => {
 
       <div className="mt-5 flex flex-col sm:grid grid-cols-2 md:grid-cols-6 gap-5">
         <Input
-          formRegister={register("date", { required: "Campo obrigatório" })}
+          id="date"
+          formRegister={register("date", { required: "Informe a data" })}
           type="date"
           label="Data"
           errorMessage={errors.date?.message}
         />
 
         <Input
-          formRegister={register("time", { required: "Campo obrigatório" })}
+          id="time"
+          formRegister={register("time", { required: "Informe a hora" })}
           type="time"
           label="Hora"
           errorMessage={errors.time?.message}
         />
 
         <Select
+          id="group"
           formRegister={register("group", {
-            required: "Campo obrigatório",
+            required: "Informe o grupo",
           })}
           label="Grupo"
           options={groups}
@@ -108,8 +111,9 @@ const MatchForm: React.FC = () => {
         />
 
         <Select
+          id="team1"
           formRegister={register("team1", {
-            required: "Campo obrigatório",
+            required: "Informe o time 1",
           })}
           label="Time 1"
           options={teams}
@@ -118,8 +122,9 @@ const MatchForm: React.FC = () => {
         />
 
         <Select
+          id="team2"
           formRegister={register("team2", {
-            required: "Campo obrigatório",
+            required: "Informe o time 2",
           })}
           label="Time 2"
           options={teams}

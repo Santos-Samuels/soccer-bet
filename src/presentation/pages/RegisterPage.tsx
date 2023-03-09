@@ -47,26 +47,30 @@ const RegisterPage: React.FC = () => {
       >
         <h1 className="text-center font-bold text-4xl mb-5">Registrar</h1>
         <Input
-          formRegister={register("name", { required: "Campo obrigatório" })}
+          id="name"
+          formRegister={register("name", { required: "Informe o nome" })}
           type="text"
           placeholder="Nome"
           errorMessage={errors.name?.message}
         />
         <Input
-          formRegister={register("email", { required: "Campo obrigatório" })}
+          id="email"
+          formRegister={register("email", { required: "Informe o email" })}
           type="email"
           placeholder="Email"
           errorMessage={errors.email?.message}
         />
         <Input
-          formRegister={register("password", { required: "Campo obrigatório" })}
+          id="password"
+          formRegister={register("password", { required: "Informe a senha" })}
           type="password"
           placeholder="Senha"
           errorMessage={errors.password?.message}
         />
         <Input
+          id="confirmPassword"
           formRegister={register("confirmPassword", {
-            required: "Campo obrigatório",
+            required: "Confirme a senha",
           })}
           type="password"
           placeholder="Confirmar Senha"

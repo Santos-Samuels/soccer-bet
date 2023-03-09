@@ -54,12 +54,14 @@ const LoginPage: React.FC = () => {
       >
         <h1 className="text-center font-bold text-4xl mb-5">Login</h1>
         <Input
+          id="email"
           formRegister={register("email", { required: "Campo obrigatório" })}
           type="email"
           placeholder="Email"
           errorMessage={errors.email?.message}
         />
         <Input
+          id="password"
           formRegister={register("password", { required: "Campo obrigatório" })}
           type="password"
           placeholder="Senha"

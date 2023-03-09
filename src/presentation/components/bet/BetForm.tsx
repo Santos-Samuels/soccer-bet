@@ -93,6 +93,7 @@ const BetForm: React.FC = () => {
 
       <div className="mt-5 flex flex-col sm:grid grid-cols-2 md:grid-cols-6 gap-5">
         <Input
+          id="date"
           type="date"
           label="Data"
           value={formatToInputDate()}
@@ -100,6 +101,7 @@ const BetForm: React.FC = () => {
         />
 
         <Input
+          id="time"
           type="time"
           label="Hora"
           value={
@@ -110,6 +112,7 @@ const BetForm: React.FC = () => {
         />
 
         <Select
+          id="team1"
           label="Time 1"
           options={teams}
           value={currentMatch?.team1}
@@ -117,6 +120,7 @@ const BetForm: React.FC = () => {
         />
 
         <Select
+          id="team2"
           label="Time 2"
           options={teams}
           value={currentMatch?.team2}
@@ -128,6 +132,7 @@ const BetForm: React.FC = () => {
 
           <div className="grid grid-cols-3 items-center">
             <Input
+              id="hint1"
               formRegister={register("hint1", { required: true })}
               type="number"
               min="0"
@@ -137,6 +142,7 @@ const BetForm: React.FC = () => {
             <span className="text-center font-bold text-2xl">x</span>
 
             <Input
+              id="hint2"
               formRegister={register("hint2", { required: true })}
               type="number"
               min="0"
