@@ -2,7 +2,8 @@ import { IInputUserLogin } from "@data/dto/input/user";
 import AppFacade from "@infra/facade";
 import { Button, Input } from "@presentation/components";
 import ErrorMessage from "@presentation/components/ui/ErrorMessage";
-import { useState } from "react";
+import { AppContext } from "@presentation/context";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const LoginPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [requestError, setRequestError] = useState<string>("");
   const navigate = useNavigate();
-
+  const { getUserData } = useContext(AppContext);
   const onSubmit = async (data: IInputUserLogin) => {
     setRequestError("");
     setIsLoading(true);
@@ -29,6 +30,7 @@ const LoginPage: React.FC = () => {
       localStorage.setItem("id", user.id);
 
       reset();
+      await getUserData();
       navigate("/");
     } catch (error) {
       const errorMessage = (error as Error).message;

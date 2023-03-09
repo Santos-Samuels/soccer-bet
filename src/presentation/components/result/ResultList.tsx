@@ -3,7 +3,7 @@ import { useContext } from "react";
 import ResultItem from "./ResultItem";
 
 const ResultList: React.FC = () => {
-  const { results } = useContext(AppContext);
+  const { results, matches } = useContext(AppContext);
 
   if (results.length === 0) {
     return (
@@ -20,8 +20,8 @@ const ResultList: React.FC = () => {
         {results.length}
       </p>
       <div className="flex gap-3 flex-wrap mt-5 justify-center">
-        {results.map((result) => {
-          return <ResultItem result={result} key={result.id} />;
+        {results.map((result, index) => {
+          return <ResultItem result={result} match={matches[index]} key={result.id} />;
         })}
       </div>
     </>

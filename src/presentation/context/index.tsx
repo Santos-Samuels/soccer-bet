@@ -19,6 +19,7 @@ interface IAppContext {
   setCurrentUser: Dispatch<React.SetStateAction<IUser | undefined>>;
   setCurrentMatch: Dispatch<React.SetStateAction<IMatch | undefined>>;
   getUsers: () => Promise<void>;
+  getUserData: () => Promise<void>;
 }
 
 export const AppContext = React.createContext({} as IAppContext);
@@ -76,8 +77,19 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
     try {
       const resultResponse = await listResults().execute();
       const MatchResponse = await listMatches().execute();
+
+      const filteredMatches: IMatch[] = [];
+
+      resultResponse.forEach((result) => {
+        const match = MatchResponse.find((match) => match.id === result.matchId);
+
+        if (match) {
+          filteredMatches.push(match);
+        }
+      });
+
       setResults(resultResponse);
-      setMatches(MatchResponse);
+      setMatches(filteredMatches);
     } catch (error) {
       setResults([]);
     }
@@ -146,6 +158,7 @@ export const AppProvider: React.FC<PropsWithChildren> = (props) => {
         setCurrentUser,
         setCurrentMatch,
         getUsers,
+        getUserData,
       }}
     >
       {props.children}
